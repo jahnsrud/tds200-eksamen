@@ -14,13 +14,13 @@ const routes: Routes = [
     children: [
       { path: 'tab1', loadChildren: '../tab-discovery/tab-discovery.module#TabDiscoveryPageModule' },
       { path: 'tab2', loadChildren: '../tab2/tab2.module#Tab2PageModule' },
-      { path: 'tab3', loadChildren: '../tab2/tab3.module#Tab3PageModule' },
+      { path: 'tab3', loadChildren: '../tab3/tab3.module#Tab3PageModule' },
     ]
   },
   {
-    // path: '',
-    // redirectTo: '',
-    // pathMatch: 'full'
+    path: '',
+    redirectTo: '/tab1',
+    pathMatch: 'full'
   }
 ];
 

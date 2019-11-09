@@ -16,7 +16,8 @@ export class ProfilePage implements OnInit {
   ngOnInit() {
     if (this.authService.isLoggedIn()) {
       console.log('Should be logged in...');
-      this.email = this.authService.getUser().email;
+      // this.email = this.authService.getUser().email;
+      this.email = 'coming soon!';
     }
 
   }
