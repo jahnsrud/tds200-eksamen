@@ -22,6 +22,9 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes)
   ],
-    declarations: [FeedPage, MeetingRoomComponent]
+  exports: [
+    MeetingRoomComponent
+  ],
+  declarations: [FeedPage, MeetingRoomComponent]
 })
 export class FeedPageModule {}

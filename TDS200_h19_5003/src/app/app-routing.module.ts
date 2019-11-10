@@ -7,10 +7,10 @@ const routes: Routes = [
     {path: 'login', loadChildren: './login/login.module#LoginPageModule'},
     {path: 'room', loadChildren: './room/room.module#RoomPageModule'},
     {path: 'create-room', loadChildren: './create-room/create-room.module#CreateRoomPageModule'},
-    {path: 'my-meeting-rooms', loadChildren: './my-meeting-rooms/my-meeting-rooms.module#MyMeetingRoomsPageModule'},
     {path: 'profile', loadChildren: './profile/profile.module#ProfilePageModule'},
     {path: 'tabs', loadChildren: './tabs/tabs.module#TabsPageModule'},
     {path: 'tab-discovery', loadChildren: './tab-discovery/tab-discovery.module#TabDiscoveryPageModule'},
+  { path: 'my-rooms', loadChildren: './my-rooms/my-rooms.module#MyRoomsPageModule' },
 
 ];
 
