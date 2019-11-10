@@ -1,16 +1,33 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>Login</ion-title>
-    <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
-    </ion-buttons>
-  </ion-toolbar>
+    <ion-toolbar>
+        <ion-title>Login</ion-title>
+        <ion-buttons slot="start">
+            <ion-back-button></ion-back-button>
+        </ion-buttons>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-input placeholder="Email" type="email" [(ngModel)]="user.username"></ion-input>
-  <ion-input placeholder="Password" type="password" [(ngModel)]="user.password"></ion-input>
-  <ion-button (click)="login()">Sign in!</ion-button>
-  <ion-button (click)="register()">Register</ion-button>
-  <ion-button (click)="resetPassword()">Forgot Password</ion-button>
+
+    <div class="login-input-container">
+        <h1>Log in</h1>
+        <h2>Appointment</h2>
+        <ion-item>
+            <ion-label position="floating">Email</ion-label>
+            <ion-input placeholder="Email" type="email" [(ngModel)]="user.username"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label position="floating">Password</ion-label>
+            <ion-input placeholder="Password" type="password" [(ngModel)]="user.password"></ion-input>
+        </ion-item>
+
+        <ion-button (click)="login()">Sign in!</ion-button>
+
+        <h1>Already registered?</h1>
+        <ion-button (click)="register()">Register</ion-button>
+        <ion-button (click)="resetPassword()">Forgot Password</ion-button>
+      <ion-button>Cancel</ion-button>
+
+    </div>
+
 </ion-content>
