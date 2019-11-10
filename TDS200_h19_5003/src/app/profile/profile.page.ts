@@ -17,8 +17,12 @@ export class ProfilePage implements OnInit {
     if (this.authService.isLoggedIn()) {
       console.log('Should be logged in...');
       // this.email = this.authService.getUser().email;
-      this.email = 'coming soon!';
+      // this.email = 'Is logged in!';
+    } else {
+      // this.email = 'Not signed in';
     }
+
+    this.checkLoginStatus();
 
   }
 
@@ -30,10 +34,13 @@ export class ProfilePage implements OnInit {
       if (user) {
         this.email = user.email;
       } else {
-        this.email = '';
+        this.email = 'Not signed in';
       }
     });
+  }
 
+  signOut() {
+    this.authService.signOut();
   }
 
 }

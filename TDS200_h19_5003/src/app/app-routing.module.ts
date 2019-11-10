@@ -11,8 +11,7 @@ const routes: Routes = [
     {path: 'profile', loadChildren: './profile/profile.module#ProfilePageModule'},
     {path: 'tabs', loadChildren: './tabs/tabs.module#TabsPageModule'},
     {path: 'tab-discovery', loadChildren: './tab-discovery/tab-discovery.module#TabDiscoveryPageModule'},
-    {path: 'tab2', loadChildren: './tab2/tab2.module#Tab2PageModule'},
-    {path: 'tab3', loadChildren: './tab3/tab3.module#Tab3PageModule'},
+
 ];
 
 @NgModule({

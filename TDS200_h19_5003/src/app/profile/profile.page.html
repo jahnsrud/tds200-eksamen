@@ -6,5 +6,8 @@
 
 <ion-content>
   <p>Welcome</p>
-  <p>{{email}}</p>
+  <p>Email {{email}}</p>
+  <ion-button (click)="signOut()">Sign out</ion-button>
+  <!--<ion-button *ngIf="isLoggedIn == false" (click)="openLogin()" >Login</ion-button>-->
+
 </ion-content>
