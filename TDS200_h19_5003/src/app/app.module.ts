@@ -5,6 +5,7 @@ import {RouteReuseStrategy} from '@angular/router';
 import {IonicModule, IonicRouteStrategy} from '@ionic/angular';
 import {SplashScreen} from '@ionic-native/splash-screen/ngx';
 import {StatusBar} from '@ionic-native/status-bar/ngx';
+import {Camera} from '@ionic-native/camera/ngx';
 
 import {AppComponent} from './app.component';
 import {AppRoutingModule} from './app-routing.module';
@@ -12,7 +13,9 @@ import {AngularFireAuthModule} from '@angular/fire/auth';
 import {AngularFireModule} from '@angular/fire';
 import {AngularFirestoreModule} from '@angular/fire/firestore';
 import {AngularFireStorageModule} from '@angular/fire/storage';
-
+import {ImagePicker} from '@ionic-native/image-picker/ngx';
+import {CameraPage} from './camera/camera.page';
+import {CameraPageModule} from './camera/camera.module';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyDDxcYzFb94gWtAAPAxQLlEjgewPfKf8gQ',
@@ -26,7 +29,7 @@ const firebaseConfig = {
 
 @NgModule({
   declarations: [AppComponent],
-  entryComponents: [],
+  entryComponents: [CameraPage],
   imports: [BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
@@ -34,10 +37,13 @@ const firebaseConfig = {
     AngularFirestoreModule,
     AngularFireAuthModule,
     AngularFireStorageModule,
+    CameraPageModule,
   ],
   providers: [
     StatusBar,
     SplashScreen,
+    Camera,
+    ImagePicker,
     {provide: RouteReuseStrategy, useClass: IonicRouteStrategy}
   ],
   bootstrap: [AppComponent]

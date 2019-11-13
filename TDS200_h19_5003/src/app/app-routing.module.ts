@@ -6,11 +6,12 @@ const routes: Routes = [
     {path: 'feed', loadChildren: './feed/feed.module#FeedPageModule'},
     {path: 'room', loadChildren: './room/room.module#RoomPageModule'},
     {path: 'login', loadChildren: './login/login.module#LoginPageModule'},
-    {path: 'create-room', loadChildren: './create-room/create-room.module#CreateRoomPageModule'},
+    {path: 'new-room', loadChildren: './new-room/new-room.module#NewRoomPageModule'},
     {path: 'profile', loadChildren: './profile/profile.module#ProfilePageModule'},
     {path: 'tabs', loadChildren: './tabs/tabs.module#TabsPageModule'},
     {path: 'tab-discovery', loadChildren: './tab-discovery/tab-discovery.module#TabDiscoveryPageModule'},
     {path: 'my-rooms', loadChildren: './my-rooms/my-rooms.module#MyRoomsPageModule'},
+  { path: 'camera', loadChildren: './camera/camera.module#CameraPageModule' },
 
 ];
 

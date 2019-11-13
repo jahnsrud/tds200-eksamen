@@ -1,0 +1,15 @@
+.cordova-camera-capture {
+  margin-top: 44px;
+  video {
+    width: 100%;
+  }
+  button {
+    padding: 16px;
+  }
+}
+.capture-view {
+  background: #282828;
+  // background: #{view-gray-background};
+  height: 100%;
+}
+

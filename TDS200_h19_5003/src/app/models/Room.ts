@@ -1,4 +1,4 @@
-export default interface IRoom {
+export default interface Room {
     name: string;
     imageUrl: string;
     price: number;
@@ -7,10 +7,10 @@ export default interface IRoom {
     size: string;
     availability: string;
     facilities: string;
-    reviews: IReview;
+    reviews: Review;
 }
 
-export interface IReview {
+export interface Review {
     stars: number;
     author: string;
     comment: string;
