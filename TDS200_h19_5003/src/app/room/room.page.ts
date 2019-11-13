@@ -12,23 +12,16 @@ export class RoomPage implements OnInit {
 
   constructor() {
 
-    let room: IRoom = {
-      address: "", availability: "", description: "", facilities: "", imageUrl: "", name: "", price: 0, reviews: undefined, size: ""
-
-    };
-
-
-
     this.room = {
       name: 'SOMETHING',
       imageUrl: 'https://images.unsplash.com/photo-1497366811353-6870744d04b2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80',
-      address: '',
-      availability: '',
-      description: '',
-      facilities: '',
-      price: 0,
+      address: 'The Big Road 23',
+      availability: 'BOOKED',
+      description: 'The best you can rent.',
+      facilities: 'WiFi, HDMI, comfortable chairs',
+      price: 200,
       reviews: undefined,
-      size: '',
+      size: '120',
 
     };
 
