@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 
-import { ImageUploaderService } from './image-uploader.service';
+import { RoomCreatorService } from './room-creator.service';
 
-describe('ImageUploaderService', () => {
+describe('RoomCreatorService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: ImageUploaderService = TestBed.get(ImageUploaderService);
+    const service: RoomCreatorService = TestBed.get(RoomCreatorService);
     expect(service).toBeTruthy();
   });
 });
