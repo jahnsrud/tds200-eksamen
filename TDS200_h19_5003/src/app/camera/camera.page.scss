@@ -11,5 +11,11 @@
   background: #282828;
   // background: #{view-gray-background};
   height: 100%;
+
+  video {
+    height: 100% !important;
+    width: 100% !important;
+  }
+
 }
 

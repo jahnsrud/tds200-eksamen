@@ -6,16 +6,34 @@
 
 <ion-content>
 
-    <div class="capture-view"></div>
     <h1>Let's create a room</h1>
-    <ion-button (click)="openCamera()">Take Picture</ion-button>
-    <ion-button (click)="openPhotoPicker()">Select Pictures...</ion-button>
-    <p>ION TEXT.test</p>
+    <p>Lorem ipsum!</p>
 
+    <h2>Where is your meeting room?</h2>
+    <ion-input placeholder="Location"></ion-input>
     <ion-chip outline="true">
         <ion-label color="primary">Testing, Oslo</ion-label>
     </ion-chip>
 
-    <ion-button>Next Step</ion-button>
+    <div class="capture-view"></div>
+
+    <ion-item>
+        <ion-range min="-200" max="200" color="secondary">
+            <ion-label slot="start">-200</ion-label>
+            <ion-label slot="end">200</ion-label>
+        </ion-range>
+    </ion-item>
+
+
+    <ion-button (click)="openCamera()">Take Picture</ion-button>
+    <ion-button (click)="openPhotoPicker()">Select Pictures...</ion-button>
+    <!--<ion-button>Next Step</ion-button>-->
 
 </ion-content>
+
+<ion-footer>
+    <ion-toolbar>
+        <ion-button color="dark">Back</ion-button>
+        <ion-button>Next</ion-button>
+    </ion-toolbar>
+</ion-footer>

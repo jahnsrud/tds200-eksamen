@@ -1,28 +1,39 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>Room</ion-title>
-    <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
-    </ion-buttons>
-  </ion-toolbar>
+    <ion-toolbar>
+        <ion-title>Room</ion-title>
+        <ion-buttons slot="start">
+            <ion-back-button></ion-back-button>
+        </ion-buttons>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <img [src]="room.imageUrl"/>
-  <h1>Info</h1>
-  <h2>{{room.name}}</h2>
-  <p>{{room.price}}</p>
-  <p>{{room.address}}</p>
-  <p>{{room.size}}</p>
-  <p>{{room.availability}}</p>
-  <ion-button (click)="bookNow()">Book Now</ion-button>
-  <h2>Description</h2>
-  <p>{{room.description}}</p>
-  <h2>Facilities</h2>
-  <p>{{room.facilities}}</p>
-  <ion-button>Map</ion-button>
+    <img [src]="room.imageUrl"/>
+    <h1 class="ion-text-center">{{room.name}}</h1>
+    <p class="ion-text-center">{{room.priceInNOK}}{{currencySuffix}}</p>
 
-  <h2>Reviews</h2>
-  <p>{{room.reviews}}</p>
+    <div class="location-container">
+        <p>{{room.address}}</p>
+        <p>{{room.size}}</p>
+        <ion-button>Map</ion-button>
+    </div>
+    <p>{{room.availability}}</p>
+    <ion-button (click)="bookNow()">Book Now</ion-button>
+    <h2>Description</h2>
+    <p>{{room.description}}</p>
+    <h2>Facilities</h2>
+    <div class="facilities-container">
+        <p>{{room.facilities}}</p>
+    </div>
+
+    <h2>Reviews</h2>
+    <app-review></app-review>
+    <app-review></app-review>
 
 </ion-content>
+
+<ion-footer>
+    <ion-toolbar>
+        <ion-button expand="full">Book Now!</ion-button>
+    </ion-toolbar>
+</ion-footer>

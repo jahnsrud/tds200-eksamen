@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Camera, CameraOptions} from '@ionic-native/camera/ngx';
 import {ModalController, ToastController} from '@ionic/angular';
+import {ImageUploaderService} from '../providers/image-uploader.service';
 
 @Component({
   selector: 'app-camera',
@@ -22,6 +23,7 @@ export class CameraPage implements OnInit {
   };
 
   constructor(private camera: Camera,
+              private imageUploader: ImageUploaderService,
               private toastController: ToastController,
               private modalController: ModalController) { }
 
@@ -37,13 +39,20 @@ export class CameraPage implements OnInit {
       this.imagePreviewUrl = 'data:image/jpeg;base64,' + imageData;
       this.imageBase64 = imageData;
 
+
+
+
     }, (err) => {
 
       console.log('Camera not available');
       console.log(err);
-      this.presentToast(err);
-      // Handle error
+      this.presentToast(`Camera not available: ${err}`);
     });
+  }
+
+  async saveImage() {
+    const uploadedImageUrl = await this.imageUploader.uploadImageToDatabase(this.imageBase64);
+    console.log(uploadedImageUrl);
   }
 
   async presentToast(message) {

@@ -9,17 +9,18 @@ import Room from '../models/Room';
 export class RoomPage implements OnInit {
 
   room = {} as Room;
+  currencySuffix = ',-';
 
   constructor() {
 
     this.room = {
-      name: 'SOMETHING',
+      name: 'The Room Name',
       imageUrl: 'https://images.unsplash.com/photo-1497366811353-6870744d04b2',
       address: 'The Big Road 23',
       availability: 'BOOKED',
       description: 'The best you can rent.',
       facilities: 'WiFi, HDMI, comfortable chairs',
-      price: 200,
+      priceInNOK: 200,
       reviews: undefined,
       size: '120',
 
