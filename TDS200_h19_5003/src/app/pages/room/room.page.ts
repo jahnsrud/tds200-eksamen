@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import Room from '../models/Room';
+import Room from '../../models/Room';
 import {ModalController} from '@ionic/angular';
 import {MapPage} from '../map/map.page';
 

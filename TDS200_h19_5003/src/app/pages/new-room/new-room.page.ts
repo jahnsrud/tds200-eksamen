@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import Room from '../models/Room';
+import Room from '../../models/Room';
 import {Camera, CameraOptions} from '@ionic-native/camera/ngx';
 import {ImagePicker} from '@ionic-native/image-picker/ngx';
 import {ModalController, ToastController} from '@ionic/angular';
 import {CameraPage} from '../camera/camera.page';
-import {RoomCreatorService} from '../providers/room-creator.service';
+import {RoomCreatorService} from '../../providers/room-creator.service';
 
 @Component({
   selector: 'app-new-room',

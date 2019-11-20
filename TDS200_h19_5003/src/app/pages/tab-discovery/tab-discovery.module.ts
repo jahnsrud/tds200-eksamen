@@ -6,7 +6,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
 import { TabDiscoveryPage } from './tab-discovery.page';
-import {ComponentsModule} from '../components/components.module';
+import {ComponentsModule} from '../../components/components.module';
 
 const routes: Routes = [
   {
