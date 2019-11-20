@@ -10,7 +10,7 @@ import {RoomCreatorService} from '../providers/room-creator.service';
 })
 export class CameraPage implements OnInit {
 
-  private imagePreviewUrl: string;
+  imagePreviewUrl: string;
   // room = {} as Room;
 
   private imageBase64 = '';

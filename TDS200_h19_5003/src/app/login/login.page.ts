@@ -10,7 +10,7 @@ import {Router} from '@angular/router';
 })
 export class LoginPage implements OnInit {
 
-  private user = {
+  user = {
     username: '',
     password: ''
   };

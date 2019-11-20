@@ -18,6 +18,9 @@ import {CameraPage} from './camera/camera.page';
 import {CameraPageModule} from './camera/camera.module';
 import {MapPage} from './map/map.page';
 import {MapPageModule} from './map/map.module';
+import {ComponentsModule} from './components/components.module';
+import {MeetingRoomComponent} from './components/meeting-room/meeting-room.component';
+import {ReviewComponent} from './components/review/review.component';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyDDxcYzFb94gWtAAPAxQLlEjgewPfKf8gQ',
@@ -31,7 +34,7 @@ const firebaseConfig = {
 
 @NgModule({
   declarations: [AppComponent],
-  entryComponents: [CameraPage, MapPage],
+  entryComponents: [CameraPage, MapPage, MeetingRoomComponent, ReviewComponent],
   imports: [BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
@@ -39,6 +42,7 @@ const firebaseConfig = {
     AngularFirestoreModule,
     AngularFireAuthModule,
     AngularFireStorageModule,
+    ComponentsModule,
     CameraPageModule,
     MapPageModule,
   ],

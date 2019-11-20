@@ -14,7 +14,16 @@ import {RoomCreatorService} from '../providers/room-creator.service';
 export class NewRoomPage implements OnInit {
 
   private imageResponse: any[];
-
+  public facilitiesForm = [
+    { val: 'WiFi', isChecked: false },
+    { val: 'Cool Feature', isChecked: false },
+    { val: 'Coffee', isChecked: false },
+    { val: 'Coffee', isChecked: false },
+    { val: 'Coffee', isChecked: false },
+    { val: 'Coffee', isChecked: false },
+    { val: 'Coffee', isChecked: false },
+    { val: 'Coffee', isChecked: false },
+  ];
 
   constructor(private imagePicker: ImagePicker,
               private toastController: ToastController,

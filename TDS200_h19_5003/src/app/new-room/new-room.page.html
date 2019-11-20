@@ -4,7 +4,7 @@
     </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content class="ion-padding">
 
     <!--
     <ion-tabs>
@@ -63,6 +63,27 @@
                 <ion-label slot="end">1000</ion-label>
             </ion-range>
         </ion-item>
+    </div>
+
+    <div class="room-creator-section">
+        <h2>Facilities</h2>
+        <!-- TODO: Fix. Copied from Ionic documentatino -->
+        <ion-list>
+            <ion-item *ngFor="let entry of facilitiesForm">
+                <ion-label>{{entry.val}}</ion-label>
+                <ion-checkbox slot="end" [(ngModel)]="entry.isChecked"></ion-checkbox>
+            </ion-item>
+        </ion-list>
+    </div>
+
+    <div class="room-creator-section">
+        <h2>Description</h2>
+        <ion-item>
+            <ion-textarea placeholder="Tell us more about the room.">
+
+            </ion-textarea>
+        </ion-item>
+
     </div>
 
 

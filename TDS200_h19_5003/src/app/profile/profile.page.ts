@@ -8,7 +8,7 @@ import {AngularFireAuth} from '@angular/fire/auth';
   styleUrls: ['./profile.page.scss'],
 })
 export class ProfilePage implements OnInit {
-  private email: string;
+  email: string;
 
   constructor(private authService: AuthService,
               private auth: AngularFireAuth) { }
