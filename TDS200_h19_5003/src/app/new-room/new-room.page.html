@@ -4,30 +4,82 @@
     </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content padding>
 
-    <h1>Let's create a room</h1>
-    <p>Lorem ipsum!</p>
+    <!--
+    <ion-tabs>
+        <ion-tab-bar slot="top">
+            <ion-tab-button tab="schedule">
+                <ion-icon name="calendar"></ion-icon>
+                <ion-label>Schedule</ion-label>
+                <ion-badge>6</ion-badge>
+            </ion-tab-button>
 
-    <h2>Where is your meeting room?</h2>
-    <ion-input placeholder="Location"></ion-input>
-    <ion-chip outline="true">
-        <ion-label color="primary">Testing, Oslo</ion-label>
-    </ion-chip>
+            <ion-tab-button tab="speakers">
+                <ion-icon name="calendar"></ion-icon>
+                <ion-label>Speakers</ion-label>
+            </ion-tab-button>
 
-    <div class="capture-view"></div>
-
-    <ion-item>
-        <ion-range min="-200" max="200" color="secondary">
-            <ion-label slot="start">-200</ion-label>
-            <ion-label slot="end">200</ion-label>
-        </ion-range>
-    </ion-item>
+            <ion-tab-button tab="map">
+                <ion-icon name="calendar"></ion-icon>
+                <ion-label>Map</ion-label>
+            </ion-tab-button>
 
 
-    <ion-button (click)="openCamera()">Take Picture</ion-button>
-    <ion-button (click)="openPhotoPicker()">Select Pictures...</ion-button>
-    <!--<ion-button>Next Step</ion-button>-->
+        </ion-tab-bar>
+    </ion-tabs>
+    -->
+
+    <h1 class="title-label">Let's create a room</h1>
+    <img src='../../assets/img/background-new-room.png'/>
+
+    <div class="room-creator-section">
+        <h2>Where is your meeting room located?</h2>
+        <ion-item>
+            <ion-label position="stacked">Address</ion-label>
+            <ion-input placeholder="Example Street 2"></ion-input>
+        </ion-item>
+
+        <ion-chip outline="true">
+            <ion-label color="primary">TEST.location, Oslo</ion-label>
+        </ion-chip>
+    </div>
+
+    <div class="room-creator-section">
+        <h2>Capacity</h2>
+        <ion-item>
+            <ion-range min="0" max="1000" color="primary">
+                <ion-label slot="start">0</ion-label>
+                <ion-label slot="end">1000</ion-label>
+            </ion-range>
+        </ion-item>
+    </div>
+
+    <div class="room-creator-section">
+        <h2>Price</h2>
+        <ion-item>
+            <ion-range min="0" max="1000" color="primary">
+                <ion-label slot="start">0</ion-label>
+                <ion-label slot="end">1000</ion-label>
+            </ion-range>
+        </ion-item>
+    </div>
+
+
+    <div class="room-creator-section">
+        <h2>Media</h2>
+
+        <ion-button (click)="openCamera()">Take Picture</ion-button>
+        <ion-button (click)="openPhotoPicker()">Select Pictures...</ion-button>
+
+    </div>
+
+    <div class="room-creator-section">
+        <h2>Ready?</h2>
+        <ion-button (click)="create()" expand="full">Create [beta]</ion-button>
+
+    </div>
+
 
 </ion-content>
 

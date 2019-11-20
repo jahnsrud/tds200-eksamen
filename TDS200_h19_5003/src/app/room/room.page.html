@@ -1,6 +1,6 @@
 <ion-header>
     <ion-toolbar>
-        <ion-title>Room</ion-title>
+        <ion-title></ion-title>
         <ion-buttons slot="start">
             <ion-back-button></ion-back-button>
         </ion-buttons>
@@ -9,13 +9,14 @@
 
 <ion-content>
     <img [src]="room.imageUrl"/>
-    <h1 class="ion-text-center">{{room.name}}</h1>
-    <p class="ion-text-center">{{room.priceInNOK}}{{currencySuffix}}</p>
+    <h1 class="room-title ion-text-center">{{room.name}}</h1>
+    <p class="room-pricing ion-text-center">{{room.priceInNOK}}{{currencySuffix}}</p>
 
     <div class="location-container">
         <p>{{room.address}}</p>
         <p>{{room.size}}</p>
-        <ion-button>Map</ion-button>
+        <p>[map_view_here]</p>
+        <ion-button (click)="openMap()">Map</ion-button>
     </div>
     <p>{{room.availability}}</p>
     <ion-button (click)="bookNow()">Book Now</ion-button>
@@ -24,6 +25,23 @@
     <h2>Facilities</h2>
     <div class="facilities-container">
         <p>{{room.facilities}}</p>
+
+        <ion-grid>
+            <ion-row>
+                <ion-col>
+                    ion-col
+                </ion-col>
+                <ion-col>
+                    ion-col
+                </ion-col>
+                <ion-col>
+                    ion-col
+                </ion-col>
+                <ion-col>
+                    ion-col
+                </ion-col>
+            </ion-row>
+        </ion-grid>
     </div>
 
     <h2>Reviews</h2>

@@ -1,27 +1,20 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
 
-import { FeedPage } from './feed.page';
+import { BookingPageRoutingModule } from './booking-routing.module';
 
-const routes: Routes = [
-  {
-    path: '',
-    component: FeedPage
-  }
-];
+import { BookingPage } from './booking.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    RouterModule.forChild(routes)
+    BookingPageRoutingModule
   ],
-
-  declarations: [FeedPage]
+  declarations: [BookingPage]
 })
-export class FeedPageModule {}
+export class BookingPageModule {}

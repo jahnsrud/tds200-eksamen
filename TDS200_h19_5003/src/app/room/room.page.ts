@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import Room from '../models/Room';
+import {ModalController} from '@ionic/angular';
+import {MapPage} from '../map/map.page';
 
 @Component({
   selector: 'app-room',
@@ -11,7 +13,7 @@ export class RoomPage implements OnInit {
   room = {} as Room;
   currencySuffix = ',-';
 
-  constructor() {
+  constructor(private modalController: ModalController) {
 
     this.room = {
       name: 'The Room Name',
@@ -35,4 +37,12 @@ export class RoomPage implements OnInit {
     console.error('Not available yet');
   }
 
+  async openMap() {
+    const modal = await this.modalController.create({
+      component: MapPage
+    });
+
+    return await modal.present();
+
+  }
 }

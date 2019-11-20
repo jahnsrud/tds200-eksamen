@@ -9,9 +9,14 @@ const routes: Routes = [
     {path: 'new-room', loadChildren: './new-room/new-room.module#NewRoomPageModule'},
     {path: 'profile', loadChildren: './profile/profile.module#ProfilePageModule'},
     {path: 'tabs', loadChildren: './tabs/tabs.module#TabsPageModule'},
-    {path: 'tab-discovery', loadChildren: './tab-discovery/tab-discovery.module#TabDiscoveryPageModule'},
+    {path: 'discovery', loadChildren: './tab-discovery/tab-discovery.module#TabDiscoveryPageModule'},
     {path: 'my-rooms', loadChildren: './my-rooms/my-rooms.module#MyRoomsPageModule'},
-  { path: 'camera', loadChildren: './camera/camera.module#CameraPageModule' },
+    {path: 'camera', loadChildren: './camera/camera.module#CameraPageModule'},
+    {path: 'map', loadChildren: './map/map.module#MapPageModule'},
+  {
+    path: 'booking',
+    loadChildren: () => import('./booking/booking.module').then( m => m.BookingPageModule)
+  },
 
 ];
 

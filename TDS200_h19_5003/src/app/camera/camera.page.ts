@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Camera, CameraOptions} from '@ionic-native/camera/ngx';
 import {ModalController, ToastController} from '@ionic/angular';
-import {ImageUploaderService} from '../providers/image-uploader.service';
+import {RoomCreatorService} from '../providers/room-creator.service';
 
 @Component({
   selector: 'app-camera',
@@ -23,7 +23,7 @@ export class CameraPage implements OnInit {
   };
 
   constructor(private camera: Camera,
-              private imageUploader: ImageUploaderService,
+              private roomCreator: RoomCreatorService,
               private toastController: ToastController,
               private modalController: ModalController) { }
 
@@ -51,7 +51,7 @@ export class CameraPage implements OnInit {
   }
 
   async saveImage() {
-    const uploadedImageUrl = await this.imageUploader.uploadImageToDatabase(this.imageBase64);
+    const uploadedImageUrl = await this.roomCreator.uploadImageToDatabase(this.imageBase64);
     console.log(uploadedImageUrl);
   }
 

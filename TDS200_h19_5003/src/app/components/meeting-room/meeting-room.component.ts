@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
+import Room from '../../models/Room';
 
 @Component({
   selector: 'app-meeting-room',
@@ -8,7 +9,11 @@ import {Router} from '@angular/router';
 })
 export class MeetingRoomComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  @Input() room: Room;
+
+  constructor(private router: Router) {
+
+  }
 
   ngOnInit() {}
 

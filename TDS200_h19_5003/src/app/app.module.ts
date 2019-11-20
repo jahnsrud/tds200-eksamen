@@ -16,6 +16,8 @@ import {AngularFireStorageModule} from '@angular/fire/storage';
 import {ImagePicker} from '@ionic-native/image-picker/ngx';
 import {CameraPage} from './camera/camera.page';
 import {CameraPageModule} from './camera/camera.module';
+import {MapPage} from './map/map.page';
+import {MapPageModule} from './map/map.module';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyDDxcYzFb94gWtAAPAxQLlEjgewPfKf8gQ',
@@ -29,7 +31,7 @@ const firebaseConfig = {
 
 @NgModule({
   declarations: [AppComponent],
-  entryComponents: [CameraPage],
+  entryComponents: [CameraPage, MapPage],
   imports: [BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
@@ -38,6 +40,7 @@ const firebaseConfig = {
     AngularFireAuthModule,
     AngularFireStorageModule,
     CameraPageModule,
+    MapPageModule,
   ],
   providers: [
     StatusBar,
