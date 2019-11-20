@@ -1,9 +1,15 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Booking</ion-title>
+    <ion-title>Booking</ion-title><ion-buttons slot="end">
+      <ion-button (click)="close()">
+          Cancel
+      </ion-button>
+  </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-<p>Invoice or Card?</p>
+    <h1>Payment Method</h1>
+    <ion-button expand="block">Invoice</ion-button>
+    <ion-button expand="block">Card</ion-button>
 </ion-content>

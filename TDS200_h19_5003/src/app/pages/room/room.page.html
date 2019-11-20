@@ -12,9 +12,9 @@
     <h1 class="room-title ion-text-center">{{room.name}}</h1>
     <p class="room-pricing ion-text-center">{{room.priceInNOK}}{{currencySuffix}}</p>
 
-    <div class="main-content-container ion-padding">
+    <div class="ion-padding">
 
-        <div class="location-container">
+        <div class="room-detail-container">
             <p>{{room.address}}</p>
             <p>{{room.size}}</p>
             <p>[map_view_here]</p>
@@ -25,10 +25,10 @@
         <h2>Description</h2>
         <p>{{room.description}}</p>
         <h2>Facilities</h2>
-        <div class="facilities-container">
+        <div class="room-detail-container">
 
             <ion-list>
-                <ion-item *ngFor="let facility of room.facilities">
+                <ion-item *ngFor="let facility of room.facilities" class="ion-no-padding">
                     <p>{{facility}}</p>
                 </ion-item>
             </ion-list>
