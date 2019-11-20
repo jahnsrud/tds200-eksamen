@@ -1,103 +1,102 @@
 <ion-header>
     <ion-toolbar>
         <ion-title>New Room</ion-title>
+        <ion-buttons slot="end">
+            <ion-button>
+                Cancel
+            </ion-button>
+        </ion-buttons>
     </ion-toolbar>
 </ion-header>
 
 <ion-content class="ion-padding">
 
-    <!--
-    <ion-tabs>
-        <ion-tab-bar slot="top">
-            <ion-tab-button tab="schedule">
-                <ion-icon name="calendar"></ion-icon>
-                <ion-label>Schedule</ion-label>
-                <ion-badge>6</ion-badge>
-            </ion-tab-button>
-
-            <ion-tab-button tab="speakers">
-                <ion-icon name="calendar"></ion-icon>
-                <ion-label>Speakers</ion-label>
-            </ion-tab-button>
-
-            <ion-tab-button tab="map">
-                <ion-icon name="calendar"></ion-icon>
-                <ion-label>Map</ion-label>
-            </ion-tab-button>
-
-
-        </ion-tab-bar>
-    </ion-tabs>
-    -->
-
     <h1 class="title-label">Let's create a room</h1>
-    <img src='../../../assets/img/background-new-room.png'/>
+    <img src="../../../assets/img/background-new-room.png" class="layout-image"/>
 
-    <div class="room-creator-section">
-        <h2>Where is your meeting room located?</h2>
-        <ion-item>
-            <ion-label position="stacked">Address</ion-label>
-            <ion-input placeholder="Example Street 2"></ion-input>
-        </ion-item>
+    <div class="main-form">
 
-        <ion-chip outline="true">
-            <ion-label color="primary">TEST.location, Oslo</ion-label>
-        </ion-chip>
-    </div>
-
-    <div class="room-creator-section">
-        <h2>Capacity</h2>
-        <ion-item>
-            <ion-range min="0" max="1000" color="primary">
-                <ion-label slot="start">0</ion-label>
-                <ion-label slot="end">1000</ion-label>
-            </ion-range>
-        </ion-item>
-    </div>
-
-    <div class="room-creator-section">
-        <h2>Price</h2>
-        <ion-item>
-            <ion-range min="0" max="1000" color="primary">
-                <ion-label slot="start">0</ion-label>
-                <ion-label slot="end">1000</ion-label>
-            </ion-range>
-        </ion-item>
-    </div>
-
-    <div class="room-creator-section">
-        <h2>Facilities</h2>
-        <!-- TODO: Fix. Copied from Ionic documentatino -->
-        <ion-list>
-            <ion-item *ngFor="let entry of facilitiesForm">
-                <ion-label>{{entry.val}}</ion-label>
-                <ion-checkbox slot="end" [(ngModel)]="entry.isChecked"></ion-checkbox>
+        <div class="room-creator-section">
+            <h2>Address</h2>
+            <p class="subtitle">Where is your room located?</p>
+            <ion-item class="ion-no-padding">
+                <ion-label position="stacked">Address</ion-label>
+                <ion-input placeholder="Example Street 2" [(ngModel)]="room.address"></ion-input>
             </ion-item>
-        </ion-list>
-    </div>
 
-    <div class="room-creator-section">
-        <h2>Description</h2>
-        <ion-item>
-            <ion-textarea placeholder="Tell us more about the room.">
+            <ion-chip outline="true" class="address-viewer">
+                <ion-label color="primary">TEST.location, Oslo</ion-label>
+            </ion-chip>
+        </div>
 
-            </ion-textarea>
-        </ion-item>
+        <div class="room-creator-section">
+            <h2>Name</h2>
+            <p class="subtitle">Give your room a memorable title</p>
+            <ion-item class="ion-no-padding">
+                <ion-input placeholder="The Great Hall" [(ngModel)]="room.name"></ion-input>
+            </ion-item>
+        </div>
 
-    </div>
+        <div class="room-creator-section">
+            <h2>People</h2>
+            <ion-item class="ion-no-padding" lines="none">
+                <ion-range min="0" max="1000" color="primary">
+                    <ion-label slot="start">0</ion-label>
+                    <ion-label slot="end">1000</ion-label>
+                </ion-range>
+            </ion-item>
+            <h2>m2</h2>
+            <ion-item class="ion-no-padding" lines="none">
+                <ion-range min="0" max="1000" color="primary">
+                    <ion-label slot="start">0</ion-label>
+                    <ion-label slot="end">1000</ion-label>
+                </ion-range>
+            </ion-item>
+        </div>
+
+        <div class="room-creator-section">
+            <h2>Pricing</h2>
+            <p class="subtitle">How much will you charge pr. day?</p>
+            <ion-item class="ion-no-padding">
+                <ion-label position="stacked">Price in kr</ion-label>
+                <ion-input placeholder="0" type="number" [(ngModel)]="room.priceInNOK"></ion-input>
+            </ion-item>
+            <p>Estimated income for renting out this room for 15
+                days/month: {{estimatedIncome}} {{room.priceInNOK * 12}}</p>
+        </div>
+
+        <div class="room-creator-section">
+            <h2>Facilities</h2>
+            <ion-list>
+                <ion-item *ngFor="let entry of facilitiesForm" class="ion-no-padding">
+                    <ion-label>{{entry.val}}</ion-label>
+                    <ion-checkbox slot="end" [(ngModel)]="entry.isChecked"></ion-checkbox>
+                </ion-item>
+            </ion-list>
+        </div>
+
+        <div class="room-creator-section">
+            <h2>Description</h2>
+            <ion-item class="ion-no-padding">
+                <ion-textarea placeholder="Tell us more about the room." [(ngModel)]="room.description"></ion-textarea>
+            </ion-item>
+
+        </div>
 
 
-    <div class="room-creator-section">
-        <h2>Media</h2>
+        <div class="room-creator-section">
+            <h2>Media</h2>
 
-        <ion-button (click)="openCamera()">Take Picture</ion-button>
-        <ion-button (click)="openPhotoPicker()">Select Pictures...</ion-button>
+            <ion-button (click)="openCamera()" color="dark">Take Picture</ion-button>
+            <ion-button (click)="openPhotoPicker()" color="dark">Select Pictures...</ion-button>
 
-    </div>
+        </div>
+        <div class="room-creator-section">
+            <h2>Publish</h2>
+            <p class="subtitle">This meeting room will immediately be available on the Appointment platform</p>
+            <ion-button (click)="create()" expand="block">Create Room</ion-button>
 
-    <div class="room-creator-section">
-        <h2>Ready?</h2>
-        <ion-button (click)="create()" expand="full">Create [beta]</ion-button>
+        </div>
 
     </div>
 

@@ -12,46 +12,55 @@
     <h1 class="room-title ion-text-center">{{room.name}}</h1>
     <p class="room-pricing ion-text-center">{{room.priceInNOK}}{{currencySuffix}}</p>
 
-    <div class="location-container">
-        <p>{{room.address}}</p>
-        <p>{{room.size}}</p>
-        <p>[map_view_here]</p>
-        <ion-button (click)="openMap()">Map</ion-button>
-    </div>
-    <p>{{room.availability}}</p>
-    <ion-button (click)="bookNow()">Book Now</ion-button>
-    <h2>Description</h2>
-    <p>{{room.description}}</p>
-    <h2>Facilities</h2>
-    <div class="facilities-container">
-        <p>{{room.facilities}}</p>
+    <div class="main-content-container ion-padding">
 
-        <ion-grid>
-            <ion-row>
-                <ion-col>
-                    ion-col
-                </ion-col>
-                <ion-col>
-                    ion-col
-                </ion-col>
-                <ion-col>
-                    ion-col
-                </ion-col>
-                <ion-col>
-                    ion-col
-                </ion-col>
-            </ion-row>
-        </ion-grid>
-    </div>
+        <div class="location-container">
+            <p>{{room.address}}</p>
+            <p>{{room.size}}</p>
+            <p>[map_view_here]</p>
+            <ion-button (click)="openMap()">Map</ion-button>
+        </div>
+        <p>{{room.availability}}</p>
+        <ion-button (click)="bookNow()">Book Now</ion-button>
+        <h2>Description</h2>
+        <p>{{room.description}}</p>
+        <h2>Facilities</h2>
+        <div class="facilities-container">
 
-    <h2>Reviews</h2>
-    <app-review></app-review>
-    <app-review></app-review>
+            <ion-list>
+                <ion-item *ngFor="let facility of room.facilities">
+                    <p>{{facility}}</p>
+                </ion-item>
+            </ion-list>
+
+            <ion-grid>
+                <ion-row>
+                    <ion-col>
+                        ion-col
+                    </ion-col>
+                    <ion-col>
+                        ion-col
+                    </ion-col>
+                    <ion-col>
+                        ion-col
+                    </ion-col>
+                    <ion-col>
+                        ion-col
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </div>
+
+        <h2>Reviews</h2>
+        <app-review></app-review>
+        <app-review></app-review>
+
+    </div>
 
 </ion-content>
 
 <ion-footer>
     <ion-toolbar>
-        <ion-button expand="full">Book Now!</ion-button>
+        <ion-button expand="block" (click)="bookNow()">Book Now!</ion-button>
     </ion-toolbar>
 </ion-footer>

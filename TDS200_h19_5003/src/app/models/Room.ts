@@ -6,7 +6,7 @@ export default interface Room {
     address: string;
     size: string;
     availability: string;
-    facilities: string;
+    facilities: string[];
     reviews: Review;
 }
 

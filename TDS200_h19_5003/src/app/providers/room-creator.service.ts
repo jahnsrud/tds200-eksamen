@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {AngularFireStorage} from '@angular/fire/storage';
 import {v4 as uuid} from 'uuid';
-import Room from '../models/Room';
+import Room, {Review} from '../models/Room';
 import {AngularFirestore} from '@angular/fire/firestore';
 import {AuthService} from './auth.service';
 import {first} from 'rxjs/operators';
@@ -38,10 +38,17 @@ export class RoomCreatorService {
     // const loggedInUser = await this.auth.authState.pipe(first()).toPromise();
 
     await this.firestore.collection('rooms').add({
-      title: room.name,
+      name: room.name,
+      imageUrl: room.imageUrl,
+      priceInNok: room.priceInNOK,
+      description: room.description,
       address: room.address,
-      imageUrl: 'none',
-      author: 'none'
+      author: 'AUTHOR_COMING_SOON',
+      size: room.size,
+      availability: room.availability,
+      facilities: room.facilities,
+      reviews: 'REVIEW_COMING_SOON'
+
     });
 
   }

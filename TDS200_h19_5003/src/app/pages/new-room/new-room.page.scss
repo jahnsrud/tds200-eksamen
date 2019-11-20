@@ -1,16 +1,37 @@
-.capture-view {
-  background: #282828;
-  height: 280px;
-}
-
 .title-label {
   text-align: center;
   margin-bottom: 32px;
+}
 
+.address-viewer {
+  margin: 0 auto;
+  margin-top: 32px;
+}
+
+.layout-image {
+  max-width: 80%;
+  margin: 0 auto;
+  display: block;
+  margin-bottom: 32px !important;
+}
+
+ion-content {
+  --background: #f7f7f7;
 }
 
 .room-creator-section {
-  border: 1px solid black;
-  padding: 16px;
+  background: white;
+  border: 1px solid #e4e4e4;
+  border-radius: 4px;
+  padding: 8px 16px 24px 16px;
   margin-bottom: 16px;
+
+  .subtitle {
+    letter-spacing: 0.7px;
+    font-size: 11pt;
+    margin-top: 10px;
+    color: #444444;
+    margin-bottom: 20px;
+  }
+
 }

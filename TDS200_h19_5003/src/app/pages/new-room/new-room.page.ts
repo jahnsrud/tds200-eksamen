@@ -14,21 +14,47 @@ import {RoomCreatorService} from '../../providers/room-creator.service';
 export class NewRoomPage implements OnInit {
 
   private imageResponse: any[];
+
+  room = {} as Room;
+
   public facilitiesForm = [
     { val: 'WiFi', isChecked: false },
-    { val: 'Cool Feature', isChecked: false },
+    { val: 'TV', isChecked: false },
     { val: 'Coffee', isChecked: false },
-    { val: 'Coffee', isChecked: false },
-    { val: 'Coffee', isChecked: false },
-    { val: 'Coffee', isChecked: false },
-    { val: 'Coffee', isChecked: false },
-    { val: 'Coffee', isChecked: false },
+    { val: 'Food serving possible', isChecked: false },
+    { val: 'HDMI', isChecked: false },
+    { val: 'VGA', isChecked: false },
+    { val: 'Whiteboard', isChecked: false },
+    { val: 'All day access', isChecked: false },
+    { val: 'Dedicated support person', isChecked: false },
+    { val: 'Capacity for large events', isChecked: false },
   ];
+    estimatedIncome: string;
+
+
 
   constructor(private imagePicker: ImagePicker,
               private toastController: ToastController,
               private modalController: ModalController,
-              private roomCreator: RoomCreatorService) { }
+              private roomCreator: RoomCreatorService) {
+
+    // TODO: FIX
+
+    this.room = {
+      name: '',
+      imageUrl: 'https://images.unsplash.com/photo-1497366811353-6870744d04b2',
+      address: '',
+      availability: '',
+      description: '',
+      facilities: [],
+      priceInNOK: 0,
+      reviews: undefined,
+      size: '0',
+
+    };
+
+
+  }
 
   ngOnInit() {}
 
@@ -84,13 +110,23 @@ export class NewRoomPage implements OnInit {
 
   create() {
 
-    let room = {} as Room;
-    room = {
-      address: '', availability: '', description: '', facilities: '', imageUrl: '', priceInNOK: 0, reviews: undefined, size: '',
-      name: 'testing, testing'
-    };
+    this.setFacilities();
 
-    this.roomCreator.createAndUploadRoom(room);
+    this.roomCreator.createAndUploadRoom(this.room);
+  }
+
+  setFacilities() {
+    const facilities: string[] = [];
+
+    for (const item of this.facilitiesForm) {
+      console.log(item);
+
+      if (item.isChecked) {
+        facilities.push(item.val);
+      }
+    }
+
+    this.room.facilities = facilities;
   }
 
   async openCamera() {

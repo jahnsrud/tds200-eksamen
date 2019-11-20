@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Router} from '@angular/router';
+import {NavigationExtras, Router} from '@angular/router';
 import Room from '../../models/Room';
 
 @Component({
@@ -17,8 +17,15 @@ export class MeetingRoomComponent implements OnInit {
 
   ngOnInit() {}
 
-  openMeetingRoom() {
-    this.router.navigate(['room']);
+  openMeetingRoom(room: Room) {
+
+    const navigationExtras: NavigationExtras = {
+      state: {
+        room
+      }
+    };
+
+    this.router.navigate(['room'], navigationExtras);
   }
 
 }

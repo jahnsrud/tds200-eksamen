@@ -47,6 +47,14 @@ export class CameraPage implements OnInit {
       console.log('Camera not available');
       console.log(err);
       this.presentToast(`Camera not available: ${err}`);
+
+      /*
+      Delay dismiss so that the Toast can display
+       */
+      setTimeout(() => {
+        this.close();
+      }, 1100);
+
     });
   }
 
@@ -58,7 +66,7 @@ export class CameraPage implements OnInit {
   async presentToast(message) {
     const toast = await this.toastController.create({
       message,
-      duration: 2000
+      duration: 900
     });
 
     toast.present();

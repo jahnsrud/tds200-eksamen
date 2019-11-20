@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import Room from '../../models/Room';
 import {ModalController} from '@ionic/angular';
 import {MapPage} from '../map/map.page';
+import {ActivatedRoute, Router} from '@angular/router';
+import {BookingPage} from '../booking/booking.page';
 
 @Component({
   selector: 'app-room',
@@ -10,31 +12,29 @@ import {MapPage} from '../map/map.page';
 })
 export class RoomPage implements OnInit {
 
-  room = {} as Room;
+  room: Room;
   currencySuffix = ',-';
 
-  constructor(private modalController: ModalController) {
-
-    this.room = {
-      name: 'The Room Name',
-      imageUrl: 'https://images.unsplash.com/photo-1497366811353-6870744d04b2',
-      address: 'The Big Road 23',
-      availability: 'BOOKED',
-      description: 'The best you can rent.',
-      facilities: 'WiFi, HDMI, comfortable chairs',
-      priceInNOK: 200,
-      reviews: undefined,
-      size: '120',
-
-    };
-
+  constructor(private modalController: ModalController,
+              private route: ActivatedRoute,
+              private router: Router) {
+    this.route.queryParams.subscribe(params => {
+      if (this.router.getCurrentNavigation().extras.state) {
+        this.room = this.router.getCurrentNavigation().extras.state.room;
+      }
+    });
   }
 
   ngOnInit() {
   }
 
-  bookNow() {
-    console.error('Not available yet');
+  async bookNow() {
+    const modal = await this.modalController.create({
+      component: BookingPage
+    });
+
+    return await modal.present();
+
   }
 
   async openMap() {
