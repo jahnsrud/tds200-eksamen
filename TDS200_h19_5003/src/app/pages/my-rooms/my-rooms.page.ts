@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
-import {Observable} from 'rxjs';
-import Room from '../../models/Room';
+import Room, {Coordinates} from '../../models/Room';
 
 @Component({
   selector: 'app-my-rooms',
@@ -12,7 +11,18 @@ export class MyRoomsPage implements OnInit {
 
   rooms: Room[] = [];
 
-  constructor(private router: Router  ) {
+  constructor(private router: Router) {
+
+    const coordinatesOslo: Coordinates = {
+      longitude: '10.757933',
+      latitude: '59.911491',
+    };
+
+    const coordinatesNYC: Coordinates = {
+      longitude: '-73.935242',
+      latitude: '40.730610',
+    };
+
     const room1: Room = {
       id: '',
       name: 'The Room Name',
@@ -23,6 +33,7 @@ export class MyRoomsPage implements OnInit {
       facilities: ['WiFi', 'Barista', 'TV', 'Food Services'],
       priceInNok: 200,
       reviews: undefined,
+      coordinates: coordinatesOslo,
       maxNumberOfPeople: 8,
     };
 
@@ -37,6 +48,7 @@ export class MyRoomsPage implements OnInit {
       facilities: ['WiFi'],
       priceInNok: 250,
       reviews: undefined,
+      coordinates: coordinatesNYC,
       maxNumberOfPeople: 16,
     };
 

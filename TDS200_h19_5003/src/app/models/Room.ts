@@ -8,7 +8,13 @@ export default interface Room {
     maxNumberOfPeople: number;
     availability: string;
     facilities: string[];
+    coordinates: Coordinates;
     reviews: Review;
+}
+
+export interface Coordinates {
+    latitude: string;
+    longitude: string;
 }
 
 export interface Review {

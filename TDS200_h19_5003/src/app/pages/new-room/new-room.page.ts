@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import Room from '../../models/Room';
+import Room, {Coordinates} from '../../models/Room';
 import {Camera, CameraOptions} from '@ionic-native/camera/ngx';
 import {ImagePicker} from '@ionic-native/image-picker/ngx';
 import {ModalController, ToastController} from '@ionic/angular';
 import {CameraPage} from '../camera/camera.page';
 import {RoomCreatorService} from '../../providers/room-creator.service';
+import * as mapboxgl from 'mapbox-gl';
+import * as MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 
 @Component({
   selector: 'app-new-room',
@@ -14,8 +16,9 @@ import {RoomCreatorService} from '../../providers/room-creator.service';
 export class NewRoomPage implements OnInit {
 
   private imageResponse: any[];
-
   room = {} as Room;
+
+  map: mapboxgl;
 
   public facilitiesForm = [
     { val: 'WiFi', isChecked: false },
@@ -29,16 +32,13 @@ export class NewRoomPage implements OnInit {
     { val: 'Dedicated support person', isChecked: false },
     { val: 'Capacity for large events', isChecked: false },
   ];
-    estimatedIncome: string;
 
-
+  estimatedIncome: string;
 
   constructor(private imagePicker: ImagePicker,
               private toastController: ToastController,
               private modalController: ModalController,
               private roomCreator: RoomCreatorService) {
-
-    // TODO: FIX
 
     this.room = {
       id: '',
@@ -50,6 +50,7 @@ export class NewRoomPage implements OnInit {
       facilities: [],
       priceInNok: null,
       reviews: undefined,
+      coordinates: null,
       maxNumberOfPeople: 2
 
     };
@@ -57,12 +58,52 @@ export class NewRoomPage implements OnInit {
 
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.addMap();
+  }
 
+  addMap() {
+    mapboxgl.accessToken = 'pk.eyJ1IjoiamFobWFyMTciLCJhIjoiY2pvazNkODgyMDJtOTNwbW43YTQ2azA5ZSJ9.iPR0QgDHkzsJMy6jgCGNMg';
+
+    this.map = new mapboxgl.Map({
+      container: 'map-view',
+      style: 'mapbox://styles/mapbox/streets-v11',
+      center: [10.757933, 59.911491],
+      zoom: 9
+    });
+
+    const geocoder = new MapboxGeocoder({
+      accessToken: mapboxgl.accessToken,
+      mapboxgl,
+      placeholder: 'Search...',
+    });
+
+    this.map.addControl(geocoder);
+
+    this.map.on('load', () => {
+
+      geocoder.on('result', e => {
+        // this.map.getSource('single-point').setData(e.result.geometry);
+        console.warn(e.result);
+
+        const coordinates: Coordinates = {
+          longitude: e.result.geometry.coordinates[0],
+          latitude: e.result.geometry.coordinates[1],
+        };
+
+        this.room.address = e.result.place_name;
+
+        this.room.coordinates = coordinates;
+
+
+      });
+
+    });
+
+
+  }
 
   openPhotoPicker() {
-
-
     const options = {
       // Android only. Max images to be selected, defaults to 15. If this is set to 1, upon
       // selection of a single image, the plugin will return it.
@@ -113,8 +154,11 @@ export class NewRoomPage implements OnInit {
 
     this.setFacilities();
 
+    // TODO: Indicate error or success
     this.roomCreator.createAndUploadRoom(this.room);
   }
+
+
 
   setFacilities() {
     const facilities: string[] = [];
@@ -143,8 +187,6 @@ export class NewRoomPage implements OnInit {
 
     // TODO: Validate
     this.room.imageUrl = data;
-
-
 
   }
 

@@ -19,14 +19,15 @@
         <div class="room-creator-section">
             <h2>Address</h2>
             <p class="subtitle">Where is your room located?</p>
-            <ion-item class="ion-no-padding">
-                <ion-label position="stacked">Address</ion-label>
-                <ion-input placeholder="Example Street 2" [(ngModel)]="room.address" autocapitalize="words"></ion-input>
-            </ion-item>
 
-            <ion-chip outline="true" class="address-viewer">
-                <ion-label color="primary">TEST.location, Oslo</ion-label>
-            </ion-chip>
+            <div id="map-container">
+                <div id="map-view">
+                </div>
+
+            </div>
+
+            <p>{{this.room.address}}</p>
+
         </div>
 
         <div class="room-creator-section">
@@ -76,7 +77,8 @@
         <div class="room-creator-section">
             <h2>Description</h2>
             <ion-item class="ion-no-padding">
-                <ion-textarea placeholder="Tell us more about the room." [(ngModel)]="room.description" autocapitalize="on"></ion-textarea>
+                <ion-textarea placeholder="Tell us more about the room." [(ngModel)]="room.description"
+                              autocapitalize="on"></ion-textarea>
             </ion-item>
 
         </div>

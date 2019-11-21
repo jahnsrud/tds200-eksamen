@@ -43,10 +43,11 @@ export class RoomCreatorService {
       priceInNok: room.priceInNok,
       description: room.description,
       address: room.address,
-      author: 'AUTHOR_COMING_SOON',
       maxNumberOfPeople: room.maxNumberOfPeople,
       availability: room.availability,
       facilities: room.facilities,
+      coordinates: room.coordinates,
+      author: 'AUTHOR_COMING_SOON',
       reviews: 'REVIEW_COMING_SOON'
 
     });

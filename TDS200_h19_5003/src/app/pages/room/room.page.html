@@ -16,9 +16,10 @@
 
         <div class="room-detail-container">
             <p>{{room.address}}</p>
-            <p>{{room.maxNumberOfPeople}}</p>
-            <p>[map_view_here]</p>
-            <ion-button (click)="openMap()">Map</ion-button>
+            <p>Capacity: {{room.maxNumberOfPeople}} persons</p>
+            <img [src]="mapPreviewImageUrl" (click)="openMap()" class="map-preview">
+            <ion-button (click)="openMap()" expand="block">Open Map</ion-button>
+
         </div>
         <p>{{room.availability}}</p>
         <ion-button (click)="bookNow()">Book Now</ion-button>
@@ -26,29 +27,12 @@
         <p>{{room.description}}</p>
         <h2>Facilities</h2>
         <div class="room-detail-container">
-
             <ion-list>
                 <ion-item *ngFor="let facility of room.facilities" class="ion-no-padding">
                     <p>{{facility}}</p>
                 </ion-item>
             </ion-list>
 
-            <ion-grid>
-                <ion-row>
-                    <ion-col>
-                        ion-col
-                    </ion-col>
-                    <ion-col>
-                        ion-col
-                    </ion-col>
-                    <ion-col>
-                        ion-col
-                    </ion-col>
-                    <ion-col>
-                        ion-col
-                    </ion-col>
-                </ion-row>
-            </ion-grid>
         </div>
 
         <h2>Reviews</h2>

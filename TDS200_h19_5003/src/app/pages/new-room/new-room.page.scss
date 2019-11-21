@@ -8,6 +8,18 @@
   margin-top: 32px;
 }
 
+#map-container {
+  height: 400px;
+  width: 100%;
+  background: black;
+
+  .map-view, .mapboxgl-map, .mapboxgl-canvas {
+    height: 100%;
+    width: 100%;
+  }
+}
+
+
 .layout-image {
   max-width: 80%;
   margin: 0 auto;
