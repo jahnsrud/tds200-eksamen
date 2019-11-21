@@ -23,7 +23,7 @@ export class MyRoomsPage implements OnInit {
       facilities: ['WiFi', 'Barista', 'TV', 'Food Services'],
       priceInNok: 200,
       reviews: undefined,
-      size: '120',
+      maxNumberOfPeople: 8,
     };
 
 
@@ -37,7 +37,7 @@ export class MyRoomsPage implements OnInit {
       facilities: ['WiFi'],
       priceInNok: 250,
       reviews: undefined,
-      size: '90',
+      maxNumberOfPeople: 16,
     };
 
 

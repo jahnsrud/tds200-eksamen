@@ -43,14 +43,14 @@ export class NewRoomPage implements OnInit {
     this.room = {
       id: '',
       name: '',
-      imageUrl: 'https://images.unsplash.com/photo-1497366811353-6870744d04b2',
+      imageUrl: '',
       address: '',
       availability: '',
       description: '',
       facilities: [],
       priceInNok: null,
       reviews: undefined,
-      size: '0',
+      maxNumberOfPeople: 2
 
     };
 
@@ -135,7 +135,16 @@ export class NewRoomPage implements OnInit {
       component: CameraPage
     });
 
-    return await modal.present();
+    await modal.present();
+
+    const { data } = await modal.onWillDismiss();
+
+    console.log(data);
+
+    // TODO: Validate
+    this.room.imageUrl = data;
+
+
 
   }
 

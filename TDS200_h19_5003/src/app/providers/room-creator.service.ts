@@ -44,7 +44,7 @@ export class RoomCreatorService {
       description: room.description,
       address: room.address,
       author: 'AUTHOR_COMING_SOON',
-      size: room.size,
+      maxNumberOfPeople: room.maxNumberOfPeople,
       availability: room.availability,
       facilities: room.facilities,
       reviews: 'REVIEW_COMING_SOON'

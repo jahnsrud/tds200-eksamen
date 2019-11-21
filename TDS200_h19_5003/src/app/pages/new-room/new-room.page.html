@@ -38,20 +38,18 @@
         </div>
 
         <div class="room-creator-section">
-            <h2>People</h2>
+            <h2>Capacity</h2>
+            <p class="subtitle">How many guests can you accept?</p>
+
             <ion-item class="ion-no-padding" lines="none">
-                <ion-range min="0" max="1000" color="primary">
-                    <ion-label slot="start">0</ion-label>
-                    <ion-label slot="end">1000</ion-label>
+                <ion-range [(ngModel)]="room.maxNumberOfPeople" min="1" max="40" color="primary">
+                    <ion-label slot="start">1</ion-label>
+                    <ion-label slot="end">40+</ion-label>
                 </ion-range>
             </ion-item>
-            <h2>m2</h2>
-            <ion-item class="ion-no-padding" lines="none">
-                <ion-range min="0" max="1000" color="primary">
-                    <ion-label slot="start">0</ion-label>
-                    <ion-label slot="end">1000</ion-label>
-                </ion-range>
-            </ion-item>
+
+            <p>Estimated capacity will be {{room.maxNumberOfPeople}} guests</p>
+
         </div>
 
         <div class="room-creator-section">
@@ -87,7 +85,7 @@
         <div class="room-creator-section">
             <h2>Media</h2>
 
-            <img src="../../../assets/img/background-new-room.png"/>
+            <img [src]="room.imageUrl" class="room-image-thumbnail"/>
 
             <ion-button (click)="openCamera()" color="dark">Take Picture</ion-button>
             <ion-button (click)="openPhotoPicker()" color="dark">Select Pictures...</ion-button>

@@ -11,6 +11,7 @@ import {RoomCreatorService} from '../../providers/room-creator.service';
 export class CameraPage implements OnInit {
 
   imagePreviewUrl: string;
+  uploadedImageUrl: string;
   // room = {} as Room;
 
   private imageBase64 = '';
@@ -59,8 +60,8 @@ export class CameraPage implements OnInit {
   }
 
   async saveImage() {
-    const uploadedImageUrl = await this.roomCreator.uploadImageToDatabase(this.imageBase64);
-    console.log(uploadedImageUrl);
+    this.uploadedImageUrl = await this.roomCreator.uploadImageToDatabase(this.imageBase64);
+    console.log(this.uploadedImageUrl);
   }
 
   async presentToast(message) {
@@ -74,6 +75,6 @@ export class CameraPage implements OnInit {
 
 
   close() {
-    this.modalController.dismiss();
+    this.modalController.dismiss(this.uploadedImageUrl);
   }
 }

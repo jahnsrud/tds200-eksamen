@@ -5,7 +5,7 @@ export default interface Room {
     priceInNok: number;
     description: string;
     address: string;
-    size: string;
+    maxNumberOfPeople: number;
     availability: string;
     facilities: string[];
     reviews: Review;
