@@ -41,13 +41,14 @@ export class NewRoomPage implements OnInit {
     // TODO: FIX
 
     this.room = {
+      id: '',
       name: '',
       imageUrl: 'https://images.unsplash.com/photo-1497366811353-6870744d04b2',
       address: '',
       availability: '',
       description: '',
       facilities: [],
-      priceInNOK: 0,
+      priceInNok: null,
       reviews: undefined,
       size: '0',
 

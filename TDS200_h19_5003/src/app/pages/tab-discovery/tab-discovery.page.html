@@ -5,6 +5,10 @@
 </ion-header>
 
 <ion-content>
-<h1>Tab.discovery.here.</h1>
+  <ion-list>
+    <ion-item *ngFor="let room of rooms$ | async; trackBy: trackFunc" lines="none">
+      <app-meeting-room [room]="room"></app-meeting-room>
+    </ion-item>
+  </ion-list>
 
 </ion-content>

@@ -1,7 +1,8 @@
 export default interface Room {
+    id: string;
     name: string;
     imageUrl: string;
-    priceInNOK: number;
+    priceInNok: number;
     description: string;
     address: string;
     size: string;

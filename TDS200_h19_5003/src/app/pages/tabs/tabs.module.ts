@@ -19,7 +19,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: '/tab1',
+    redirectTo: '',
     pathMatch: 'full'
   }
 ];

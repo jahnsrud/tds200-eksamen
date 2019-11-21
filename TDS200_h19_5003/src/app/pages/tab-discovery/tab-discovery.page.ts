@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {Observable} from 'rxjs';
+import Room from '../../models/Room';
+import {AngularFirestore} from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-tab-discovery',
@@ -7,9 +10,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TabDiscoveryPage implements OnInit {
 
-  constructor() { }
+  private rooms$: Observable<Room[]>;
+
+  constructor(public firestore: AngularFirestore) { }
 
   ngOnInit() {
+    this.rooms$ = this.firestore.collection('rooms').valueChanges({idField: 'id'}) as Observable<Room[]>;
+
   }
+
+  trackFunc(index, item) {
+    // console.log(item, index);
+    return item.id;
+  }
+
+
 
 }

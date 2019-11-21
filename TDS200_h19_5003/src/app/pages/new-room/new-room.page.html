@@ -21,7 +21,7 @@
             <p class="subtitle">Where is your room located?</p>
             <ion-item class="ion-no-padding">
                 <ion-label position="stacked">Address</ion-label>
-                <ion-input placeholder="Example Street 2" [(ngModel)]="room.address"></ion-input>
+                <ion-input placeholder="Example Street 2" [(ngModel)]="room.address" autocapitalize="words"></ion-input>
             </ion-item>
 
             <ion-chip outline="true" class="address-viewer">
@@ -33,7 +33,7 @@
             <h2>Name</h2>
             <p class="subtitle">Give your room a memorable title</p>
             <ion-item class="ion-no-padding">
-                <ion-input placeholder="The Great Hall" [(ngModel)]="room.name"></ion-input>
+                <ion-input placeholder="The Great Hall" [(ngModel)]="room.name" autocapitalize="on"></ion-input>
             </ion-item>
         </div>
 
@@ -59,10 +59,10 @@
             <p class="subtitle">How much will you charge pr. day?</p>
             <ion-item class="ion-no-padding">
                 <ion-label position="stacked">Price in kr</ion-label>
-                <ion-input placeholder="0" type="number" [(ngModel)]="room.priceInNOK"></ion-input>
+                <ion-input placeholder="0" type="number" [(ngModel)]="room.priceInNok"></ion-input>
             </ion-item>
-            <p>Estimated income for renting out this room for 15
-                days/month: {{estimatedIncome}} {{room.priceInNOK * 12}}</p>
+            <p *ngIf="room.priceInNok > 0">Estimated income for renting out this room for 15
+                days/month: {{estimatedIncome}} {{room.priceInNok * 15}},-</p>
         </div>
 
         <div class="room-creator-section">
@@ -78,7 +78,7 @@
         <div class="room-creator-section">
             <h2>Description</h2>
             <ion-item class="ion-no-padding">
-                <ion-textarea placeholder="Tell us more about the room." [(ngModel)]="room.description"></ion-textarea>
+                <ion-textarea placeholder="Tell us more about the room." [(ngModel)]="room.description" autocapitalize="on"></ion-textarea>
             </ion-item>
 
         </div>
@@ -87,13 +87,16 @@
         <div class="room-creator-section">
             <h2>Media</h2>
 
+            <img src="../../../assets/img/background-new-room.png"/>
+
             <ion-button (click)="openCamera()" color="dark">Take Picture</ion-button>
             <ion-button (click)="openPhotoPicker()" color="dark">Select Pictures...</ion-button>
 
         </div>
-        <div class="room-creator-section">
+        <div class="room-creator-section publish-section">
             <h2>Publish</h2>
             <p class="subtitle">This meeting room will immediately be available on the Appointment platform</p>
+
             <ion-button (click)="create()" expand="block">Create Room</ion-button>
 
         </div>
@@ -104,8 +107,8 @@
 </ion-content>
 
 <ion-footer>
-    <ion-toolbar>
+    <!--<ion-toolbar>
         <ion-button color="dark">Back</ion-button>
         <ion-button>Next</ion-button>
-    </ion-toolbar>
+    </ion-toolbar>-->
 </ion-footer>

@@ -40,7 +40,7 @@ export class RoomCreatorService {
     await this.firestore.collection('rooms').add({
       name: room.name,
       imageUrl: room.imageUrl,
-      priceInNok: room.priceInNOK,
+      priceInNok: room.priceInNok,
       description: room.description,
       address: room.address,
       author: 'AUTHOR_COMING_SOON',

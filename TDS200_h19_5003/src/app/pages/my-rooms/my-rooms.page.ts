@@ -14,26 +14,28 @@ export class MyRoomsPage implements OnInit {
 
   constructor(private router: Router  ) {
     const room1: Room = {
+      id: '',
       name: 'The Room Name',
       imageUrl: 'https://images.unsplash.com/photo-1497366811353-6870744d04b2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80',
       address: 'The Big Road 23',
       availability: 'BOOKED',
       description: 'The best you can rent.',
       facilities: ['WiFi', 'Barista', 'TV', 'Food Services'],
-      priceInNOK: 200,
+      priceInNok: 200,
       reviews: undefined,
       size: '120',
     };
 
 
     const room2: Room = {
+      id: '',
       name: 'The It Worked Room',
       imageUrl: 'https://images.unsplash.com/photo-1574174227799-c3697c71352a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80',
       address: 'The Small Road 23',
       availability: 'Available',
       description: 'Small.',
       facilities: ['WiFi'],
-      priceInNOK: 250,
+      priceInNok: 250,
       reviews: undefined,
       size: '90',
     };
