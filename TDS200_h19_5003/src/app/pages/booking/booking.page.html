@@ -11,6 +11,11 @@
 <ion-content class="ion-padding">
     <h1>{{room.name}}</h1>
 
+    <ion-item>
+        <ion-label>MM DD YY</ion-label>
+        <ion-datetime displayFormat="MM DD YY" placeholder="Select Date"></ion-datetime>
+    </ion-item>
+
     <div class="pricing-total">
         <h2>Your Total</h2>
         <p>{{room.priceInNok}}{{currencySuffix}}</p>

@@ -11,19 +11,24 @@
     <img [src]="room.imageUrl"/>
     <h1 class="room-title ion-text-center">{{room.name}}</h1>
     <p class="room-pricing ion-text-center">{{room.priceInNok}}{{currencySuffix}}</p>
+    <p>{{room.address}}</p>
 
     <div class="ion-padding">
 
+        <img [src]="mapPreviewImageUrl" (click)="openMap()" class="map-preview">
+
         <div class="room-detail-container">
-            <p>{{room.address}}</p>
-            <p>Capacity: {{room.maxNumberOfPeople}} persons</p>
-            <img [src]="mapPreviewImageUrl" (click)="openMap()" class="map-preview">
+            <p>{{room.availability}}</p>
+            <ion-button (click)="bookNow()">Book Now</ion-button>
 
         </div>
-        <p>{{room.availability}}</p>
-        <ion-button (click)="bookNow()">Book Now</ion-button>
+
+
         <h2>Description</h2>
+        <p>Capacity: {{room.maxNumberOfPeople}} persons</p>
+
         <p>{{room.description}}</p>
+
         <h2>Facilities</h2>
         <div class="room-detail-container">
             <ion-list>
@@ -35,8 +40,8 @@
         </div>
 
         <h2>Reviews</h2>
-        <app-review></app-review>
-        <app-review></app-review>
+
+        <app-review *ngFor="let review of room.reviews" [review]="review"></app-review>
 
     </div>
 

@@ -9,7 +9,7 @@ export default interface Room {
     availability: string;
     facilities: string[];
     coordinates: Coordinates;
-    reviews: Review;
+    reviews: Review[];
 }
 
 export interface Coordinates {

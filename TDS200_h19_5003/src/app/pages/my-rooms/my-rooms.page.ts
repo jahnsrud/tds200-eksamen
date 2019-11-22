@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
-import Room, {Coordinates} from '../../models/Room';
+import Room, {Coordinates, Review} from '../../models/Room';
 
 @Component({
   selector: 'app-my-rooms',
@@ -23,6 +23,20 @@ export class MyRoomsPage implements OnInit {
       latitude: '40.730610',
     };
 
+    const review1: Review = {
+      stars: 5,
+      author: 'someone',
+      comment: 'Great atmosphere.',
+      date: 'Today',
+    };
+
+    const review2: Review = {
+      stars: 4,
+      author: 'else',
+      comment: 'Almost perfect. Just one mistake ruined everything.',
+      date: 'Yesterday',
+    };
+
     const room1: Room = {
       id: '',
       name: 'The Room Name',
@@ -32,7 +46,7 @@ export class MyRoomsPage implements OnInit {
       description: 'The best you can rent.',
       facilities: ['WiFi', 'Barista', 'TV', 'Food Services'],
       priceInNok: 200,
-      reviews: undefined,
+      reviews: [review1, review2],
       coordinates: coordinatesOslo,
       maxNumberOfPeople: 8,
     };
@@ -47,7 +61,7 @@ export class MyRoomsPage implements OnInit {
       description: 'Small.',
       facilities: ['WiFi'],
       priceInNok: 250,
-      reviews: undefined,
+      reviews: [review2],
       coordinates: coordinatesNYC,
       maxNumberOfPeople: 16,
     };
