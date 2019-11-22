@@ -49,6 +49,7 @@ export class MyRoomsPage implements OnInit {
       reviews: [review1, review2],
       coordinates: coordinatesOslo,
       maxNumberOfPeople: 8,
+      owner: '',
     };
 
 
@@ -64,6 +65,7 @@ export class MyRoomsPage implements OnInit {
       reviews: [review2],
       coordinates: coordinatesNYC,
       maxNumberOfPeople: 16,
+      owner: '',
     };
 
 

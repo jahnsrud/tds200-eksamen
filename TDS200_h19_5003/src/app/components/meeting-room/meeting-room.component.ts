@@ -10,6 +10,7 @@ import Room from '../../models/Room';
 export class MeetingRoomComponent implements OnInit {
 
   @Input() room: Room;
+  currencySuffix = ',-';
 
   constructor(private router: Router) {
 

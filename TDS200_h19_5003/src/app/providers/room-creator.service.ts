@@ -38,7 +38,7 @@ export class RoomCreatorService {
     // const loggedInUser = await this.auth.authState.pipe(first()).toPromise();
 
     await this.firestore.collection('rooms').add({
-      author: 'AUTHOR_COMING_SOON',
+      owner: 'OWNER_COMING_SOON',
       name: room.name,
       imageUrl: room.imageUrl,
       priceInNok: room.priceInNok,

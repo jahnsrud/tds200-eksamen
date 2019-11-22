@@ -1,15 +1,23 @@
 <div class="card" (click)="openMeetingRoom(room)">
 
-    <img [src]="room.imageUrl" class="featured-image"/>
+    <div class="featured-image" [style.backgroundImage]="'url('+ room.imageUrl +')'"></div>
+
     <div class="fade-overlay"></div>
     <div class="card-content">
         <h1 class="title">{{room.name}}</h1>
         <p class="address">{{room.address}}</p>
-        <p>{{room.description}}</p>
         <div class="divider"></div>
-        <p class="pricing">
-            {{room.priceInNok}},-
-        </p>
-        <p>Size: {{room.maxNumberOfPeople}}</p>
+
+        <ion-row class="ion-align-items-center">
+            <ion-col size="6">
+                <ion-icon class="capacity-icon" name="people"></ion-icon>
+                <span class="capacity-text">{{room.maxNumberOfPeople}} people</span>
+            </ion-col>
+
+            <ion-col size="6" class="ion-align-self-end">
+                <p class="pricing">{{room.priceInNok}}{{currencySuffix}}</p>
+            </ion-col>
+        </ion-row>
+
     </div>
 </div>

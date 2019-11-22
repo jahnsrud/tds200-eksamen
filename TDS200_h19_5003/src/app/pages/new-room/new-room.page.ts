@@ -46,6 +46,7 @@ export class NewRoomPage implements OnInit {
       id: '',
       name: '',
       imageUrl: '',
+      owner: '',
       address: '',
       availability: '',
       description: '',
