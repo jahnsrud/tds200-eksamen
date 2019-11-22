@@ -2,7 +2,7 @@
     <ion-toolbar>
         <ion-title>New Room</ion-title>
         <ion-buttons slot="end">
-            <ion-button>
+            <ion-button (click)="promptUserForClosing()">
                 Cancel
             </ion-button>
         </ion-buttons>
@@ -26,7 +26,7 @@
 
             </div>
 
-            <p>{{this.room.address}}</p>
+            <p class="address">{{this.room.address}}</p>
 
         </div>
 

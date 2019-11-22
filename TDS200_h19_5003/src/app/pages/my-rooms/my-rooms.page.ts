@@ -61,7 +61,6 @@ export class MyRoomsPage implements OnInit {
   }
 
   addRoom() {
-
     this.router.navigate(['new-room']);
   }
 }

@@ -1,12 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import Room, {Coordinates} from '../../models/Room';
-import {Camera, CameraOptions} from '@ionic-native/camera/ngx';
 import {ImagePicker} from '@ionic-native/image-picker/ngx';
-import {ModalController, ToastController} from '@ionic/angular';
+import {ActionSheetController, ModalController, ToastController} from '@ionic/angular';
 import {CameraPage} from '../camera/camera.page';
 import {RoomCreatorService} from '../../providers/room-creator.service';
 import * as mapboxgl from 'mapbox-gl';
 import * as MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-new-room',
@@ -21,16 +21,16 @@ export class NewRoomPage implements OnInit {
   map: mapboxgl;
 
   public facilitiesForm = [
-    { val: 'WiFi', isChecked: false },
-    { val: 'TV', isChecked: false },
-    { val: 'Coffee', isChecked: false },
-    { val: 'Food serving possible', isChecked: false },
-    { val: 'HDMI', isChecked: false },
-    { val: 'VGA', isChecked: false },
-    { val: 'Whiteboard', isChecked: false },
-    { val: 'All day access', isChecked: false },
-    { val: 'Dedicated support person', isChecked: false },
-    { val: 'Capacity for large events', isChecked: false },
+    {val: 'WiFi', isChecked: false},
+    {val: 'TV', isChecked: false},
+    {val: 'Coffee', isChecked: false},
+    {val: 'Food serving possible', isChecked: false},
+    {val: 'HDMI', isChecked: false},
+    {val: 'VGA', isChecked: false},
+    {val: 'Whiteboard', isChecked: false},
+    {val: 'All day access', isChecked: false},
+    {val: 'Dedicated support person', isChecked: false},
+    {val: 'Capacity for large events', isChecked: false},
   ];
 
   estimatedIncome: string;
@@ -38,7 +38,9 @@ export class NewRoomPage implements OnInit {
   constructor(private imagePicker: ImagePicker,
               private toastController: ToastController,
               private modalController: ModalController,
-              private roomCreator: RoomCreatorService) {
+              private location: Location,
+              private roomCreator: RoomCreatorService,
+              private actionSheetController: ActionSheetController) {
 
     this.room = {
       id: '',
@@ -159,7 +161,6 @@ export class NewRoomPage implements OnInit {
   }
 
 
-
   setFacilities() {
     const facilities: string[] = [];
 
@@ -181,7 +182,7 @@ export class NewRoomPage implements OnInit {
 
     await modal.present();
 
-    const { data } = await modal.onWillDismiss();
+    const {data} = await modal.onWillDismiss();
 
     console.log(data);
 
@@ -190,4 +191,36 @@ export class NewRoomPage implements OnInit {
 
   }
 
+  async promptUserForClosing() {
+
+
+    const actionSheet = await this.actionSheetController.create({
+      header: `Delete this room?`,
+      subHeader: 'Your progress will not be saved',
+      buttons: [{
+        text: 'Delete',
+        role: 'default',
+        icon: 'trash',
+        handler: () => {
+          this.close();
+        }
+      },
+        {
+          text: 'Keep Editing',
+          role: 'cancel',
+          handler: () => {
+
+          }
+        }],
+
+    });
+
+    await actionSheet.present();
+
+  }
+
+
+  close() {
+    this.location.back();
+  }
 }

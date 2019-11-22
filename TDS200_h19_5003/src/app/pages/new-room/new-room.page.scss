@@ -46,11 +46,19 @@ ion-content {
     margin-bottom: 20px;
   }
 
+  .address {
+    font-size: 10pt;
+    color: gray;
+    margin-top: 32px;
+    letter-spacing: 0.5px;
+  }
+
   .room-image-thumbnail {
     width: 100px;
     height: 100px;
     border-radius: 50px;
     border: 1px solid black;
+    display: block;
   }
 
 }
@@ -58,4 +66,5 @@ ion-content {
 .publish-section {
   background: #74c9df;
   border: 1px solid black;
+  margin-bottom: 64px;
 }

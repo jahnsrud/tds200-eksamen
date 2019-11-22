@@ -1,4 +1,25 @@
 .card {
-  border: 1px solid black;
-  padding: 16px;
+  border-bottom: 1px solid black;
+  padding: 16px 8px;
+  margin-bottom: 24px;
+
+  .featured-image {
+    border-radius: 4px;
+  }
+
+  .title {
+    font-size: 18pt;
+  }
+
+  .address {
+    margin-top: 0px;
+    color: gray;
+    font-size: 11pt;
+  }
+
+  .pricing {
+    letter-spacing: 0.8px;
+    font-weight: bold;
+  }
+
 }

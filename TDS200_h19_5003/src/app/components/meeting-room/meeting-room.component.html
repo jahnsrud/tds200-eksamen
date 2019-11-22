@@ -1,8 +1,8 @@
 <div class="card" (click)="openMeetingRoom(room)">
-    <h1>{{room.name}}</h1>
+    <img [src]="room.imageUrl" class="featured-image"/>
+    <h1 class="title">{{room.name}}</h1>
+    <p class="address">{{room.address}}</p>
     <p>{{room.description}}</p>
-    <p>{{room.priceInNok}},-</p>
-    <p>{{room.address}}</p>
+    <p class="pricing">{{room.priceInNok}},-</p>
     <p>Size: {{room.maxNumberOfPeople}}</p>
-    <img [src]="room.imageUrl"/>
 </div>

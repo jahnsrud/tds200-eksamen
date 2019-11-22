@@ -14,7 +14,7 @@ const routes: Routes = [
     children: [
       { path: 'tab1', loadChildren: '../tab-discovery/tab-discovery.module#TabDiscoveryPageModule' },
       { path: 'tab2', loadChildren: '../my-rooms/my-rooms.module#MyRoomsPageModule' },
-      { path: 'tab3', loadChildren: '../tab3/tab3.module#Tab3PageModule' },
+      { path: 'tab3', loadChildren: '../profile/profile.module#ProfilePageModule' },
     ]
   },
   {

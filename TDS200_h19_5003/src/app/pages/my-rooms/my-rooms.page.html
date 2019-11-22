@@ -1,11 +1,15 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>My Rooms</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="addRoom()">
+        <ion-icon slot="icon-only" name="add"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-button (click)="addRoom()" expand="block">+ Add Room</ion-button>
 
   <ion-list>
     <ion-item *ngFor="let room of rooms">

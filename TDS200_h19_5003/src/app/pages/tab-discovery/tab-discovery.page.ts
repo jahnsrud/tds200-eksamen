@@ -10,7 +10,7 @@ import {AngularFirestore} from '@angular/fire/firestore';
 })
 export class TabDiscoveryPage implements OnInit {
 
-  private rooms$: Observable<Room[]>;
+  rooms$: Observable<Room[]>;
 
   constructor(public firestore: AngularFirestore) { }
 
