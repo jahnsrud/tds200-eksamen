@@ -38,6 +38,7 @@ export class RoomCreatorService {
     // const loggedInUser = await this.auth.authState.pipe(first()).toPromise();
 
     await this.firestore.collection('rooms').add({
+      author: 'AUTHOR_COMING_SOON',
       name: room.name,
       imageUrl: room.imageUrl,
       priceInNok: room.priceInNok,
@@ -47,8 +48,7 @@ export class RoomCreatorService {
       availability: room.availability,
       facilities: room.facilities,
       coordinates: room.coordinates,
-      author: 'AUTHOR_COMING_SOON',
-      reviews: 'REVIEW_COMING_SOON'
+      reviews: []
 
     });
 
