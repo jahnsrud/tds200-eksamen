@@ -24,5 +24,6 @@ export class BookingPage implements OnInit {
 
   confirmBooking() {
 
+    this.close();
   }
 }

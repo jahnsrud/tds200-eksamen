@@ -51,7 +51,7 @@ export class NewRoomPage implements OnInit {
       description: '',
       facilities: [],
       priceInNok: null,
-      reviews: undefined,
+      reviews: [],
       coordinates: null,
       maxNumberOfPeople: 2
 
