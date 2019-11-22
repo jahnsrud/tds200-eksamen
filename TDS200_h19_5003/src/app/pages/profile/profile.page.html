@@ -4,13 +4,20 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <p>Welcome</p>
-  <p>Email {{email}}</p>
-  <ion-button (click)="signOut()">Sign out</ion-button>
+<ion-content class="ion-padding">
 
-  <p>Coming soon</p>
-  <ion-button (click)="login()">Log in</ion-button>
-  <!--<ion-button *ngIf="isLoggedIn == false" (click)="openLogin()" >Login</ion-button>-->
+  <div *ngIf="authService.isLoggedIn()">
+    <h1>Welcome Back!</h1>
+    <p>Email {{authService.user.email}}</p>
+    <ion-button (click)="signOut()" expand="block">Sign out</ion-button>
+  </div>
+
+  <div *ngIf="!authService.isLoggedIn()">
+    <h2>Welcome to Appointment</h2>
+    <ion-button (click)="login()" expand="block">Sign in to get started</ion-button>
+  </div>
+
+
+
 
 </ion-content>

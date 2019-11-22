@@ -1,12 +1,20 @@
 import { Injectable } from '@angular/core';
 import {AngularFireAuth} from '@angular/fire/auth';
+import {FirebaseAuth} from '@angular/fire';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  constructor(private fireAuth: AngularFireAuth) { }
+  user: firebase.User = null;
+
+  constructor(private fireAuth: AngularFireAuth) {
+    this.fireAuth.authState.subscribe((authData) => {
+      this.user = authData;
+    });
+
+  }
 
   async login(email: string, password: string) {
     await this.fireAuth.auth.signInWithEmailAndPassword(email, password);
@@ -21,17 +29,14 @@ export class AuthService {
   }
 
   async isLoggedIn() {
-    this.fireAuth.auth.onAuthStateChanged(user => {
-      if (user) {
-        return true;
-      } else {
-        return false;
-      }
-    });
+    return this.user !== null;
+
   }
 
   async getUser() {
-    return this.fireAuth.auth.currentUser;
+    if (this.isLoggedIn()) {
+      return this.user;
+    }
   }
 
 

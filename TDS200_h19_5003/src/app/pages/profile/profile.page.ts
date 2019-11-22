@@ -17,13 +17,6 @@ export class ProfilePage implements OnInit {
   }
 
   ngOnInit() {
-    if (this.authService.isLoggedIn()) {
-      console.log('Should be logged in...');
-      // this.email = this.authService.getUser().email;
-      // this.email = 'Is logged in!';
-    } else {
-      // this.email = 'Not signed in';
-    }
 
     this.checkLoginStatus();
 
@@ -31,15 +24,6 @@ export class ProfilePage implements OnInit {
 
   checkLoginStatus() {
 
-    // TODO: Improve: flytt til Auth Service
-
-    this.auth.auth.onAuthStateChanged(user => {
-      if (user) {
-        this.email = user.email;
-      } else {
-        this.email = 'Not signed in';
-      }
-    });
   }
 
   signOut() {
