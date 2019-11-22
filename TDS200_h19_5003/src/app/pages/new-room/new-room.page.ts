@@ -84,6 +84,8 @@ export class NewRoomPage implements OnInit {
 
     this.map.on('load', () => {
 
+      this.map.resize();
+
       geocoder.on('result', e => {
         // this.map.getSource('single-point').setData(e.result.geometry);
         console.warn(e.result);

@@ -27,28 +27,14 @@ export class MapPage implements OnInit {
       zoom: 9
     });
 
-    /*
+
     this.map.on('load', () => {
 
-      geocoder.on('result', e => {
-        // this.map.getSource('single-point').setData(e.result.geometry);
-        console.warn(e.result);
-
-        const coordinates: Coordinates = {
-          longitude: e.result.geometry.coordinates[0],
-          latitude: e.result.geometry.coordinates[1],
-        };
-
-        this.room.address = e.result.place_name;
-
-        this.room.coordinates = coordinates;
-
-
-      });
+      this.map.resize();
 
     });
 
-*/
+
   }
 
   close() {
