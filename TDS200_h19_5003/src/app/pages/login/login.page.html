@@ -1,34 +1,30 @@
 <ion-content>
+
+    <div class="close-button" (click)="cancel()">X</div>
+
     <div class="login-container">
 
         <h1 class="title">Appointment</h1>
         <p class="subtitle-pitch">Make money on unused space. Rent meeting rooms from and to people you can trust.</p>
 
-        <ion-segment (ionChange)="segmentChanged($event)">
-            <ion-segment-button value="friends">
-                <ion-label>Friends</ion-label>
-            </ion-segment-button>
-            <ion-segment-button value="enemies">
-                <ion-label>Enemies</ion-label>
-            </ion-segment-button>
-        </ion-segment>
-
         <div [ngSwitch]="formType">
 
             <!-- Welcome -->
             <div *ngSwitchCase="FormType.Welcome">
-                <ion-button expand="block" class="login-buttons">I'm new. Register</ion-button>
-                <ion-button expand="block" fill="outline" class="login-buttons">Sign in</ion-button>
+                <ion-button expand="block" class="login-buttons" (click)="switchToRegister()">I'm new. Register</ion-button>
+                <ion-button expand="block" fill="outline" class="login-buttons" (click)="switchToLogin()">Sign in</ion-button>
             </div>
 
             <!-- Register -->
             <div *ngSwitchCase="FormType.Register">
                 <app-register-form></app-register-form>
+                <p class="form-switcher-button" (click)="switchToLogin()">Already registered? Sign in.</p>
             </div>
 
             <!-- Login -->
             <div *ngSwitchCase="FormType.Login">
                 <app-login-form></app-login-form>
+                <p class="form-switcher-button" (click)="switchToRegister()">Not registered? Sign up</p>
 
             </div>
 

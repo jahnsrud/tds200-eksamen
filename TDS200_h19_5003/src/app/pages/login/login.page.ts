@@ -23,46 +23,12 @@ export class LoginPage implements OnInit {
   // Makes Angular recognize our Enum
   FormType = FormType;
 
-  user = {
-    username: '',
-    password: ''
-  };
-
   constructor(private authService: AuthService,
               private toastController: ToastController,
               private router: Router) {
   }
 
   ngOnInit() {
-  }
-
-  async login() {
-
-    try {
-      const result = await this.authService.login(this.user.username, this.user.password);
-      console.log(result);
-      console.log('Status: Signed in');
-      this.redirectToStart();
-
-    } catch (e) {
-      console.warn(e);
-      this.presentToast(e);
-    }
-
-  }
-
-  async register() {
-
-    try {
-      const result = await this.authService.register(this.user.username, this.user.password);
-      console.log(result);
-      console.log('Status: Registered');
-      this.redirectToStart();
-
-    } catch (e) {
-      console.warn(e);
-      this.presentToast(e);
-    }
   }
 
   async presentToast(message) {
@@ -74,11 +40,6 @@ export class LoginPage implements OnInit {
     toast.present();
   }
 
-
-  resetPassword() {
-    this.presentToast('Not available');
-  }
-
   redirectToStart() {
     this.router.navigate(['']);
   }
@@ -87,7 +48,12 @@ export class LoginPage implements OnInit {
     this.redirectToStart();
   }
 
-  segmentChanged($event: CustomEvent) {
-
+  switchToLogin() {
+    this.formType = FormType.Login;
   }
+
+  switchToRegister() {
+    this.formType = FormType.Register;
+  }
+
 }
