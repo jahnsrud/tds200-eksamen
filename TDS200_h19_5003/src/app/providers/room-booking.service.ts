@@ -9,7 +9,7 @@ export class RoomBookingService {
   constructor() { }
 
   book(room: Room) {
-
+    console.warn('Not available yet');
   }
 
 
