@@ -9,11 +9,11 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="ion-padding">
 
   <ion-list>
-    <ion-item *ngFor="let room of rooms">
-      <app-meeting-room [room]="room"></app-meeting-room>
+    <ion-item *ngFor="let room of rooms" class="ion-no-padding">
+      <app-meeting-room [room]="room" class="ion-no-padding"></app-meeting-room>
     </ion-item>
   </ion-list>
 

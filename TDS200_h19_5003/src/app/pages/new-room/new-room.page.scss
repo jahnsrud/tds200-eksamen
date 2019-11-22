@@ -1,3 +1,7 @@
+ion-content {
+  --background: var(--light-background-color);
+}
+
 .title-label {
   text-align: center;
   margin-bottom: 32px;
@@ -27,14 +31,10 @@
   margin-bottom: 32px !important;
 }
 
-ion-content {
-  --background: #f7f7f7;
-}
-
 .room-creator-section {
   background: white;
   border: 1px solid #e4e4e4;
-  border-radius: 4px;
+  border-radius: var(--default-border-radius);
   padding: 8px 16px 24px 16px;
   margin-bottom: 16px;
 

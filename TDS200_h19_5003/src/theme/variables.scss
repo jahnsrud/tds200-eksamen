@@ -1,7 +1,7 @@
 :root {
   /** primary **/
   --ion-color-primary: #222428;
-  --ion-color-primary-rgb: 56, 128, 255;
+  --ion-color-primary-rgb: 34, 36, 40;
   --ion-color-primary-contrast: #ffffff;
   --ion-color-primary-contrast-rgb: 255, 255, 255;
   --ion-color-primary-shade: #3171e0;
@@ -9,6 +9,10 @@
 
   /** brand **/
   --ion-color-brand: #C85050;
+
+  /** styling **/
+  --default-border-radius: 4px;
+  --light-background-color: #f7f7f7;
 
   /** secondary **/
   --ion-color-secondary: #000000;

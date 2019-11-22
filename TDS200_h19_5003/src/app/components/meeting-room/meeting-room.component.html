@@ -1,8 +1,15 @@
 <div class="card" (click)="openMeetingRoom(room)">
-    <img [src]="room.imageUrl" class="fe    atured-image"/>
-    <h1 class="title">{{room.name}}</h1>
-    <p class="address">{{room.address}}</p>
-    <p>{{room.description}}</p>
-    <p class="pricing">{{room.priceInNok}},-</p>
-    <p>Size: {{room.maxNumberOfPeople}}</p>
+
+    <img [src]="room.imageUrl" class="featured-image"/>
+    <div class="fade-overlay"></div>
+    <div class="card-content">
+        <h1 class="title">{{room.name}}</h1>
+        <p class="address">{{room.address}}</p>
+        <p>{{room.description}}</p>
+        <div class="divider"></div>
+        <p class="pricing">
+            {{room.priceInNok}},-
+        </p>
+        <p>Size: {{room.maxNumberOfPeople}}</p>
+    </div>
 </div>

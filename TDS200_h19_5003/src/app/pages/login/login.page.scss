@@ -60,6 +60,6 @@ ion-content {
 
 .input-container {
   background: white;
-  border-radius: 4px;
+  border-radius: var(--default-border-radius);
   padding: 16px;
 }

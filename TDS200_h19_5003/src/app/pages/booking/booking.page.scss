@@ -1,13 +1,13 @@
 .pricing-total {
   background: #eeeeee;
   padding: 16px;
-  border-radius: 4px;
+  border-radius: var(--default-border-radius);
 }
 
 .payment-methods {
   .payment-method {
     padding: 32px;
     border: 1px solid gray;
-    border-radius: 4px;
+    border-radius: var(--default-border-radius);
   }
 }
