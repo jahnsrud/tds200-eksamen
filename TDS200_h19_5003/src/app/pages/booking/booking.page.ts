@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {ModalController} from '@ionic/angular';
+import Room from '../../models/Room';
 
 @Component({
   selector: 'app-booking',
@@ -8,12 +9,20 @@ import {ModalController} from '@ionic/angular';
 })
 export class BookingPage implements OnInit {
 
-  constructor(private modalController: ModalController) { }
+  @Input() room: Room;
+  currencySuffix = ',-';
+
+  constructor(private modalController: ModalController) {
+  }
 
   ngOnInit() {
   }
 
   close() {
     this.modalController.dismiss();
+  }
+
+  confirmBooking() {
+
   }
 }

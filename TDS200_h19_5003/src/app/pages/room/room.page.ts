@@ -39,7 +39,8 @@ export class RoomPage implements OnInit {
     async bookNow() {
         const modal = await this.modalController.create({
             component: BookingPage,
-            cssClass: 'j-modal'
+            cssClass: 'j-modal',
+            componentProps: { room: this.room }
         });
 
         return await modal.present();

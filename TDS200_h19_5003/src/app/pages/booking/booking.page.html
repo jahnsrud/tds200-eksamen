@@ -8,8 +8,22 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-    <h1>Payment Method</h1>
-    <ion-button expand="block">Invoice</ion-button>
-    <ion-button expand="block">Card</ion-button>
+<ion-content class="ion-padding">
+    <h1>{{room.name}}</h1>
+
+    <div class="pricing-total">
+        <h2>Your Total</h2>
+        <p>{{room.priceInNok}}{{currencySuffix}}</p>
+
+    </div>
+
+    <div class="payment-methods">
+        <h1>Payment Method</h1>
+        <div class="payment-method">
+            <p>Invoice</p>
+        </div>
+    </div>
+
+    <ion-button (click)="confirmBooking()" expand="block">Confirm Booking</ion-button>
+
 </ion-content>
