@@ -1,32 +1,40 @@
-<ion-header>
-    <ion-toolbar>
-        <ion-title>Login</ion-title>
-        <ion-buttons slot="start">
-            <ion-back-button></ion-back-button>
-        </ion-buttons>
-    </ion-toolbar>
-</ion-header>
-
 <ion-content>
+    <div class="login-container">
 
-    <div class="login-input-container">
-        <h1>Log in</h1>
-        <h2>Appointment</h2>
-        <ion-item>
-            <ion-label position="floating">Email</ion-label>
-            <ion-input placeholder="Email" type="email" [(ngModel)]="user.username"></ion-input>
-        </ion-item>
-        <ion-item>
-            <ion-label position="floating">Password</ion-label>
-            <ion-input placeholder="Password" type="password" [(ngModel)]="user.password"></ion-input>
-        </ion-item>
+        <h1 class="title">Appointment</h1>
+        <p class="subtitle-pitch">Make money on unused space. Rent meeting rooms from and to people you can trust.</p>
 
-        <ion-button (click)="login()">Sign in!</ion-button>
+        <ion-segment (ionChange)="segmentChanged($event)">
+            <ion-segment-button value="friends">
+                <ion-label>Friends</ion-label>
+            </ion-segment-button>
+            <ion-segment-button value="enemies">
+                <ion-label>Enemies</ion-label>
+            </ion-segment-button>
+        </ion-segment>
 
-        <h1>Already registered?</h1>
-        <ion-button (click)="register()">Register</ion-button>
-        <ion-button (click)="resetPassword()">Forgot Password</ion-button>
-      <ion-button>Cancel</ion-button>
+        <div [ngSwitch]="formType">
+
+            <!-- Welcome -->
+            <div *ngSwitchCase="FormType.Welcome">
+                <ion-button expand="block" class="login-buttons">I'm new. Register</ion-button>
+                <ion-button expand="block" fill="outline" class="login-buttons">Sign in</ion-button>
+            </div>
+
+            <!-- Register -->
+            <div *ngSwitchCase="FormType.Register">
+                <app-register-form></app-register-form>
+            </div>
+
+            <!-- Login -->
+            <div *ngSwitchCase="FormType.Login">
+                <app-login-form></app-login-form>
+
+            </div>
+
+
+        </div>
+
 
     </div>
 

@@ -1,0 +1,20 @@
+
+<h1>Coming soon :)</h1>
+
+<div>
+    <div class="input-container">
+        <ion-item class="ion-no-padding">
+            <ion-label position="floating">Email</ion-label>
+            <ion-input placeholder="Email" type="email" [(ngModel)]="user.username"></ion-input>
+        </ion-item>
+        <ion-item class="ion-no-padding">
+            <ion-label position="floating">Password</ion-label>
+            <ion-input placeholder="Password" type="password" [(ngModel)]="user.password"></ion-input>
+        </ion-item>
+    </div>
+
+</div>
+<ion-button (click)="login()" expand="block">Sign in!</ion-button>
+<ion-button (click)="register()">Register</ion-button>
+<ion-button (click)="resetPassword()">Forgot Password</ion-button>
+<ion-button (click)="cancel()">Cancel</ion-button>

@@ -1,14 +1,27 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {AuthService} from '../../providers/auth.service';
 import {ToastController} from '@ionic/angular';
 import {Router} from '@angular/router';
+
+export enum FormType {
+  Register,
+  Login,
+  Welcome
+}
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
 })
+
+
 export class LoginPage implements OnInit {
+
+  formType: FormType = FormType.Welcome;
+
+  // Makes Angular recognize our Enum
+  FormType = FormType;
 
   user = {
     username: '',
@@ -17,7 +30,8 @@ export class LoginPage implements OnInit {
 
   constructor(private authService: AuthService,
               private toastController: ToastController,
-              private router: Router) { }
+              private router: Router) {
+  }
 
   ngOnInit() {
   }
@@ -61,12 +75,19 @@ export class LoginPage implements OnInit {
   }
 
 
-    resetPassword() {
-        this.presentToast('Not available');
-    }
+  resetPassword() {
+    this.presentToast('Not available');
+  }
 
-    redirectToStart() {
-      this.router.navigate(['']);
-    }
+  redirectToStart() {
+    this.router.navigate(['']);
+  }
 
+  cancel() {
+    this.redirectToStart();
+  }
+
+  segmentChanged($event: CustomEvent) {
+
+  }
 }

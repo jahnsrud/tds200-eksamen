@@ -23,6 +23,8 @@ import {MeetingRoomComponent} from './components/meeting-room/meeting-room.compo
 import {ReviewComponent} from './components/review/review.component';
 import {BookingPageModule} from './pages/booking/booking.module';
 import {BookingPage} from './pages/booking/booking.page';
+import {LoginFormComponent} from './components/login-form/login-form.component';
+import {RegisterFormComponent} from './components/register-form/register-form.component';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyDDxcYzFb94gWtAAPAxQLlEjgewPfKf8gQ',
@@ -36,7 +38,7 @@ const firebaseConfig = {
 
 @NgModule({
   declarations: [AppComponent],
-  entryComponents: [CameraPage, MapPage, MeetingRoomComponent, ReviewComponent, BookingPage],
+  entryComponents: [CameraPage, MapPage, MeetingRoomComponent, ReviewComponent, BookingPage, LoginFormComponent, RegisterFormComponent],
   imports: [BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
@@ -48,6 +50,7 @@ const firebaseConfig = {
     CameraPageModule,
     MapPageModule,
     BookingPageModule,
+
   ],
   providers: [
     StatusBar,
