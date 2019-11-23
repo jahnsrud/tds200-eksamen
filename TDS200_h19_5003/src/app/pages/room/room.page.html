@@ -39,9 +39,10 @@
 
         </div>
 
-        <h2>Reviews</h2>
-
-        <app-review *ngFor="let review of room.reviews" [review]="review"></app-review>
+        <div *ngIf="room.reviews > 0" class="reviews">
+            <h2>Reviews</h2>
+            <app-review *ngFor="let review of room.reviews" [review]="review"></app-review>
+        </div>
 
     </div>
 

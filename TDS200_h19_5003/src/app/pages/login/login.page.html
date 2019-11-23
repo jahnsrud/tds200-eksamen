@@ -13,10 +13,12 @@
             <div *ngSwitchCase="FormType.Welcome">
                 <ion-button expand="block" class="login-buttons" (click)="switchFormToType(FormType.Register)">I'm new. Register</ion-button>
                 <ion-button expand="block" fill="outline" class="login-buttons" (click)="switchFormToType(FormType.Login)">Sign in</ion-button>
+
             </div>
 
             <!-- Register -->
             <div *ngSwitchCase="FormType.Register">
+
                 <app-register-form></app-register-form>
                 <p class="form-switcher-button" (click)="switchFormToType(FormType.Login)">Already registered? Sign in.</p>
             </div>

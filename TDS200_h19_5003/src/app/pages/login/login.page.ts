@@ -25,11 +25,6 @@ export class LoginPage implements OnInit {
   constructor(private auth: AuthService,
               private modalController: ModalController) {
 
-    if (auth.isLoggedIn) {
-      console.warn('Already logged in.');
-      this.cancel();
-    }
-
     auth.authState.subscribe(user => {
       if (user) {
         this.cancel();
@@ -51,6 +46,5 @@ export class LoginPage implements OnInit {
   switchFormToType(type: FormType) {
     this.formType = type;
   }
-
 
 }

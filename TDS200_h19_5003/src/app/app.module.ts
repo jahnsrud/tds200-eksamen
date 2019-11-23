@@ -43,7 +43,7 @@ const firebaseConfig = {
 
 @NgModule({
     declarations: [AppComponent],
-    entryComponents: [CameraPage, MapPage, MeetingRoomComponent, LoginPage, NewRoomPage, ReviewComponent, BookingPage, LoginFormComponent, RegisterFormComponent],
+    entryComponents: [CameraPage, MapPage, MeetingRoomComponent, LoginFormComponent, RegisterFormComponent, LoginPage, NewRoomPage, ReviewComponent, BookingPage],
     imports: [BrowserModule,
         IonicModule.forRoot(),
         AppRoutingModule,

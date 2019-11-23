@@ -7,7 +7,7 @@ import {RegisterFormComponent} from './register-form/register-form.component';
 import {FormsModule} from '@angular/forms';
 
 @NgModule({
-    imports: [IonicModule, FormsModule],
+    imports: [IonicModule.forRoot(), FormsModule],
     declarations: [MeetingRoomComponent, ReviewComponent, LoginFormComponent, RegisterFormComponent],
     exports: [MeetingRoomComponent, ReviewComponent, LoginFormComponent, RegisterFormComponent]
 })
