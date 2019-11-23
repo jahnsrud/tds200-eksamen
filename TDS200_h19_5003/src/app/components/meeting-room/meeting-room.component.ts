@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {NavigationExtras, Router} from '@angular/router';
+import {NavigationExtras} from '@angular/router';
 import Room from '../../models/Room';
+import {NavController} from '@ionic/angular';
 
 @Component({
   selector: 'app-meeting-room',
@@ -12,7 +13,7 @@ export class MeetingRoomComponent implements OnInit {
   @Input() room: Room;
   currencySuffix = ',-';
 
-  constructor(private router: Router) {
+  constructor(private navController: NavController) {
 
   }
 
@@ -26,7 +27,8 @@ export class MeetingRoomComponent implements OnInit {
       }
     };
 
-    this.router.navigate(['room'], navigationExtras);
+    this.navController.navigateForward(['room'], navigationExtras);
+
   }
 
 }

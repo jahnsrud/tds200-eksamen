@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthService} from '../../providers/auth.service';
-import {Router} from '@angular/router';
 import {ModalController} from '@ionic/angular';
 import {LoginPage} from '../login/login.page';
 
@@ -12,8 +11,7 @@ import {LoginPage} from '../login/login.page';
 export class ProfilePage implements OnInit {
 
   constructor(private authService: AuthService,
-              private modalController: ModalController,
-              private router: Router) {
+              private modalController: ModalController) {
   }
 
   ngOnInit() {

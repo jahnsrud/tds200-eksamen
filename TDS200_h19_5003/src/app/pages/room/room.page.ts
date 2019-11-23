@@ -19,15 +19,17 @@ export class RoomPage implements OnInit {
     mapPreviewImageUrl: string;
 
     constructor(private modalController: ModalController,
-                private route: ActivatedRoute,
                 private router: Router,
+                private route: ActivatedRoute,
                 private auth: AuthService,
                 private actionSheetController: ActionSheetController) {
 
         this.route.queryParams.subscribe(params => {
+            console.warn(params.room);
             if (this.router.getCurrentNavigation().extras.state) {
                 this.room = this.router.getCurrentNavigation().extras.state.room;
             }
+
         });
     }
 

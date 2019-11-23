@@ -1,8 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthService} from '../../providers/auth.service';
 import {ModalController, ToastController} from '@ionic/angular';
-import {Router} from '@angular/router';
-import {AngularFireAuth} from '@angular/fire/auth';
 
 export enum FormType {
   Register,
@@ -25,9 +23,7 @@ export class LoginPage implements OnInit {
   FormType = FormType;
 
   constructor(private auth: AuthService,
-              private modalController: ModalController,
-              private toastController: ToastController,
-              private router: Router) {
+              private modalController: ModalController) {
 
     if (auth.isLoggedIn) {
       console.warn('Already logged in.');
