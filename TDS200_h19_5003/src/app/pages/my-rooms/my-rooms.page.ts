@@ -84,10 +84,14 @@ export class MyRoomsPage implements OnInit {
   addRoom() {
 
     if (this.auth.isLoggedIn) {
-      this.router.navigate(['new-room']);
+      this.openAddRoom();
     } else {
       this.openLogin();
     }
+  }
+
+  openAddRoom() {
+    this.router.navigate(['new-room']);
   }
 
   async openLogin() {
@@ -95,6 +99,11 @@ export class MyRoomsPage implements OnInit {
       component: LoginPage
     });
 
-    return await modal.present();
+    await modal.present();
+
+    if (this.auth.isLoggedIn) {
+      this.openAddRoom();
+    }
+
   }
 }

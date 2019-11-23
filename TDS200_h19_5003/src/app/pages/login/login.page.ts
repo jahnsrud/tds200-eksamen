@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {AuthService} from '../../providers/auth.service';
 import {ModalController, ToastController} from '@ionic/angular';
 import {Router} from '@angular/router';
+import {AngularFireAuth} from '@angular/fire/auth';
 
 export enum FormType {
   Register,
@@ -33,20 +34,19 @@ export class LoginPage implements OnInit {
       this.cancel();
     }
 
+    auth.authState.subscribe(user => {
+      if (user) {
+        this.cancel();
+      }
+
+    });
+
   }
 
   ngOnInit() {
 
   }
 
-  async presentToast(message) {
-    const toast = await this.toastController.create({
-      message,
-      duration: 2000
-    });
-
-    toast.present();
-  }
 
   cancel() {
     this.modalController.dismiss();

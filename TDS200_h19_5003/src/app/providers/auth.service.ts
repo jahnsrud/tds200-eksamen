@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {AngularFireAuth} from '@angular/fire/auth';
 import {FirebaseAuth} from '@angular/fire';
+import {Observable} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -31,7 +32,10 @@ export class AuthService {
 
   get isLoggedIn(): boolean {
     return this.user !== null;
+  }
 
+  get authState() {
+    return this.fireAuth.authState;
   }
 
   get getUser() {
