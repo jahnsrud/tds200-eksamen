@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthService} from '../../providers/auth.service';
-import {ToastController} from '@ionic/angular';
+import {ModalController, ToastController} from '@ionic/angular';
 import {Router} from '@angular/router';
 
 export enum FormType {
@@ -24,16 +24,14 @@ export class LoginPage implements OnInit {
   FormType = FormType;
 
   constructor(private auth: AuthService,
+              private modalController: ModalController,
               private toastController: ToastController,
               private router: Router) {
 
     if (auth.isLoggedIn) {
-      console.warn('Already logged in. Should dismiss.');
-      this.redirectToStart();
+      console.warn('Already logged in.');
+      this.cancel();
     }
-
-    console.log(auth.isLoggedIn);
-    console.log(auth.getUser);
 
   }
 
@@ -50,20 +48,13 @@ export class LoginPage implements OnInit {
     toast.present();
   }
 
-  redirectToStart() {
-    this.router.navigate(['']);
-  }
-
   cancel() {
-    this.redirectToStart();
+    this.modalController.dismiss();
   }
 
-  switchToLogin() {
-    this.formType = FormType.Login;
+  switchFormToType(type: FormType) {
+    this.formType = type;
   }
 
-  switchToRegister() {
-    this.formType = FormType.Register;
-  }
 
 }

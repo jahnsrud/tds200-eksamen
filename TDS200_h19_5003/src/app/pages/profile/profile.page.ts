@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthService} from '../../providers/auth.service';
 import {Router} from '@angular/router';
+import {ModalController} from '@ionic/angular';
+import {LoginPage} from '../login/login.page';
 
 @Component({
   selector: 'app-profile',
@@ -10,6 +12,7 @@ import {Router} from '@angular/router';
 export class ProfilePage implements OnInit {
 
   constructor(private authService: AuthService,
+              private modalController: ModalController,
               private router: Router) {
   }
 
@@ -27,8 +30,13 @@ export class ProfilePage implements OnInit {
     this.authService.signOut();
   }
 
-  login() {
-    this.router.navigate(['login']);
+  async login() {
+
+    const modal = await this.modalController.create({
+      component: LoginPage
+    });
+
+    return await modal.present();
 
   }
 }

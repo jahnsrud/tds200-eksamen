@@ -26,6 +26,8 @@ import {BookingPage} from './pages/booking/booking.page';
 import {LoginFormComponent} from './components/login-form/login-form.component';
 import {RegisterFormComponent} from './components/register-form/register-form.component';
 import {AngularFireAuthGuardModule} from '@angular/fire/auth-guard';
+import {LoginPage} from './pages/login/login.page';
+import {LoginPageModule} from './pages/login/login.module';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyDDxcYzFb94gWtAAPAxQLlEjgewPfKf8gQ',
@@ -39,7 +41,7 @@ const firebaseConfig = {
 
 @NgModule({
   declarations: [AppComponent],
-  entryComponents: [CameraPage, MapPage, MeetingRoomComponent, ReviewComponent, BookingPage, LoginFormComponent, RegisterFormComponent],
+  entryComponents: [CameraPage, MapPage, MeetingRoomComponent, LoginPage, ReviewComponent, BookingPage, LoginFormComponent, RegisterFormComponent],
   imports: [BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
@@ -48,6 +50,7 @@ const firebaseConfig = {
     AngularFireAuthModule,
     AngularFireStorageModule,
     AngularFireAuthGuardModule,
+      LoginPageModule,
     ComponentsModule,
     CameraPageModule,
     MapPageModule,

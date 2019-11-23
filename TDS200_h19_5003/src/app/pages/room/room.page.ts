@@ -5,6 +5,7 @@ import {MapPage} from '../map/map.page';
 import {ActivatedRoute, Router} from '@angular/router';
 import {BookingPage} from '../booking/booking.page';
 import {AuthService} from '../../providers/auth.service';
+import {LoginPage} from '../login/login.page';
 
 @Component({
     selector: 'app-room',
@@ -80,8 +81,12 @@ export class RoomPage implements OnInit {
         await actionSheet.present();
     }
 
-    openLogin() {
-        this.router.navigate(['login']);
+    async openLogin() {
+        const modal = await this.modalController.create({
+            component: LoginPage
+        });
+
+        return await modal.present();
     }
 
     async openMap() {

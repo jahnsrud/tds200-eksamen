@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import Room, {Coordinates, Review} from '../../models/Room';
 import {AuthService} from '../../providers/auth.service';
+import {LoginPage} from '../login/login.page';
+import {ModalController} from '@ionic/angular';
 
 @Component({
   selector: 'app-my-rooms',
@@ -13,7 +15,8 @@ export class MyRoomsPage implements OnInit {
   rooms: Room[] = [];
 
   constructor(private router: Router,
-              private auth: AuthService) {
+              private auth: AuthService,
+              private modalController: ModalController) {
 
     const coordinatesOslo: Coordinates = {
       longitude: '10.757933',
@@ -83,8 +86,15 @@ export class MyRoomsPage implements OnInit {
     if (this.auth.isLoggedIn) {
       this.router.navigate(['new-room']);
     } else {
-      this.router.navigate(['login']);
-
+      this.openLogin();
     }
+  }
+
+  async openLogin() {
+    const modal = await this.modalController.create({
+      component: LoginPage
+    });
+
+    return await modal.present();
   }
 }
