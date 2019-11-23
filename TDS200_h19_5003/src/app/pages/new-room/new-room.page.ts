@@ -228,6 +228,6 @@ export class NewRoomPage implements OnInit {
 
 
   close() {
-    this.location.back();
+    this.modalController.dismiss();
   }
 }

@@ -4,6 +4,7 @@ import Room, {Coordinates, Review} from '../../models/Room';
 import {AuthService} from '../../providers/auth.service';
 import {LoginPage} from '../login/login.page';
 import {ModalController} from '@ionic/angular';
+import {NewRoomPage} from '../new-room/new-room.page';
 
 @Component({
   selector: 'app-my-rooms',
@@ -90,8 +91,13 @@ export class MyRoomsPage implements OnInit {
     }
   }
 
-  openAddRoom() {
-    this.router.navigate(['new-room']);
+  async openAddRoom() {
+    const modal = await this.modalController.create({
+      component: NewRoomPage
+    });
+
+    modal.present();
+
   }
 
   async openLogin() {
