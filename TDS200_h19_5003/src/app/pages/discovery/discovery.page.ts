@@ -5,10 +5,10 @@ import {AngularFirestore} from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-tab-discovery',
-  templateUrl: './tab-discovery.page.html',
-  styleUrls: ['./tab-discovery.page.scss'],
+  templateUrl: './discovery.page.html',
+  styleUrls: ['./discovery.page.scss'],
 })
-export class TabDiscoveryPage implements OnInit {
+export class DiscoveryPage implements OnInit {
 
   rooms$: Observable<Room[]>;
 

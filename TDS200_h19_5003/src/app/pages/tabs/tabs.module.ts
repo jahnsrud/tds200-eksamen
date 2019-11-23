@@ -12,7 +12,7 @@ const routes: Routes = [
     path: '',
     component: TabsPage,
     children: [
-      { path: 'tab1', loadChildren: '../tab-discovery/tab-discovery.module#TabDiscoveryPageModule' },
+      { path: 'tab1', loadChildren: '../discovery/discovery.module#DiscoveryPageModule' },
       { path: 'tab2', loadChildren: '../my-rooms/my-rooms.module#MyRoomsPageModule' },
       { path: 'tab3', loadChildren: '../profile/profile.module#ProfilePageModule' },
     ]

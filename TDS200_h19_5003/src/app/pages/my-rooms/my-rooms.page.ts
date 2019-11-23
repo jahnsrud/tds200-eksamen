@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {Router} from '@angular/router';
 import Room, {Coordinates, Review} from '../../models/Room';
 import {AuthService} from '../../providers/auth.service';
 import {LoginPage} from '../login/login.page';
@@ -15,8 +14,7 @@ export class MyRoomsPage implements OnInit {
 
   rooms: Room[] = [];
 
-  constructor(private router: Router,
-              private auth: AuthService,
+  constructor(private auth: AuthService,
               private modalController: ModalController) {
 
     const coordinatesOslo: Coordinates = {
