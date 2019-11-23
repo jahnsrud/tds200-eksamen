@@ -230,4 +230,26 @@ export class NewRoomPage implements OnInit {
   close() {
     this.modalController.dismiss();
   }
+
+  async inputChange(files: FileList) {
+
+    const file = files[0];
+
+    console.error(file);
+
+    const uploadedImageUrl = await this.roomCreator.uploadImageFile(file);
+    console.log(uploadedImageUrl);
+
+    this.room.imageUrl = uploadedImageUrl;
+
+    /*
+    for (const file of files) {
+      console.warn('HEY');
+      console.warn(file);
+
+    }
+
+     */
+  }
+
 }

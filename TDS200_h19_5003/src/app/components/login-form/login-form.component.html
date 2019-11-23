@@ -1,11 +1,12 @@
 <div class="input-container">
   <ion-item class="ion-no-padding">
     <ion-label position="floating">Email</ion-label>
-    <ion-input placeholder="Email" type="email" [(ngModel)]="user.username"></ion-input>
+    <ion-input placeholder="Email" type="email" [(ngModel)]="user.username" (keyup.enter)="focusOn(passwordField)"></ion-input>
+
   </ion-item>
   <ion-item class="ion-no-padding">
     <ion-label position="floating">Password</ion-label>
-    <ion-input placeholder="Password" type="password" [(ngModel)]="user.password"></ion-input>
+    <ion-input placeholder="Password" type="password" [(ngModel)]="user.password" (keyup.enter)="login()" #passwordField></ion-input>
   </ion-item>
     <p>Forgot Password?</p>
     <ion-button expand="block" (click)="login()" class="login-action-button">Sign in</ion-button>

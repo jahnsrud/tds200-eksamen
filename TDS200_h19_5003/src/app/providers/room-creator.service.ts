@@ -15,10 +15,9 @@ export class RoomCreatorService {
               private auth: AuthService) {
   }
 
-  async uploadImageToDatabase(imageBase64) {
-    const fileName = `app-img-${uuid()}.jpg`;
-    console.log(fileName);
-    const fileRef = this.fireStorage.ref(fileName);
+  async uploadBase64Image(imageBase64) {
+    const fileRef = this.fireStorage.ref(this.randomId);
+
     const uploadTask = fileRef.putString(
         imageBase64,
         'base64',
@@ -26,6 +25,19 @@ export class RoomCreatorService {
     );
     await uploadTask.then();
     return fileRef.getDownloadURL().toPromise();
+  }
+
+  async uploadImageFile(file) {
+
+    const fileRef = this.fireStorage.ref(this.randomId);
+
+    const uploadTask = fileRef.put(file);
+    await uploadTask.then();
+    return fileRef.getDownloadURL().toPromise();
+  }
+
+  get randomId(): string {
+    return `app-img-${uuid()}.jpg`;
   }
 
   async createAndUploadRoom(room: Room) {

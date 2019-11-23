@@ -1,16 +1,43 @@
 .cordova-camera-capture {
-  margin-top: 44px;
+  position: absolute;
+  top: 100px;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  width: 100%;
+
   video {
     height: 100% !important;
     width: 100% !important;
   }
+
   button {
-    padding: 16px;
+    padding: 16px 64px;
+    background: var(--ion-color-primary);
+    position: absolute;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    bottom: 32px;
+
+
   }
+
 }
+
+video {
+
+}
+
+button {
+  padding: 16px;
+  background: var(--ion-color-primary);
+}
+
 .capture-view {
   background: #282828;
-  // background: #{view-gray-background};
+  background-repeat: no-repeat;
+  background-size: contain;
   height: 100%;
 
 }

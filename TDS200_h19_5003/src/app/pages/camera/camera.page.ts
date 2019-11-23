@@ -12,7 +12,6 @@ export class CameraPage implements OnInit {
 
   imagePreviewUrl: string;
   uploadedImageUrl: string;
-  // room = {} as Room;
 
   private imageBase64 = '';
 
@@ -32,14 +31,13 @@ export class CameraPage implements OnInit {
     this.addCameraView();
   }
 
-  addCameraView() {
+  async addCameraView() {
     this.camera.getPicture(this.cameraOptions).then((imageData) => {
       // this.camera.DestinationType.FILE_URI gives file URI saved in local
       // this.camera.DestinationType.DATA_URL gives base64 URI
 
       this.imagePreviewUrl = 'data:image/jpeg;base64,' + imageData;
       this.imageBase64 = imageData;
-
 
 
 
@@ -60,7 +58,7 @@ export class CameraPage implements OnInit {
   }
 
   async saveImage() {
-    this.uploadedImageUrl = await this.roomCreator.uploadImageToDatabase(this.imageBase64);
+    this.uploadedImageUrl = await this.roomCreator.uploadBase64Image(this.imageBase64);
     console.log(this.uploadedImageUrl);
   }
 

@@ -1,16 +1,14 @@
 <ion-header>
-  <ion-toolbar color="dark">
-    <ion-title>Camera</ion-title>
-    <ion-buttons slot="end">
-      <ion-button (click)="close()">
-        Cancel
-      </ion-button>
-    </ion-buttons>
-  </ion-toolbar>
+    <ion-toolbar color="dark">
+        <ion-title>Camera</ion-title>
+        <ion-buttons slot="end">
+            <ion-button (click)="close()">
+                Cancel
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <div class="capture-view"></div>
-    <img [src]="imagePreviewUrl"/>
-  <button (click)="saveImage()">Save Image</button>
+    <div class="capture-view" [style.backgroundImage]="'url('+ imagePreviewUrl +')'"></div>
 </ion-content>

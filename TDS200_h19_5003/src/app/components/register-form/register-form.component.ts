@@ -16,7 +16,6 @@ export class RegisterFormComponent implements OnInit {
   };
 
   constructor(private authService: AuthService,
-              private router: Router,
               private toastController: ToastController) { }
 
   ngOnInit() {}
@@ -28,7 +27,7 @@ export class RegisterFormComponent implements OnInit {
       const result = await this.authService.register(this.user.username, this.user.password);
       console.log(result);
       console.log('Status: Registered');
-      this.redirectToStart();
+
 
     } catch (e) {
       console.warn(e);
@@ -45,8 +44,8 @@ export class RegisterFormComponent implements OnInit {
     toast.present();
   }
 
-  redirectToStart() {
-    this.router.navigate(['']);
+  focusOn(next) {
+    next.setFocus();
   }
 
 }
