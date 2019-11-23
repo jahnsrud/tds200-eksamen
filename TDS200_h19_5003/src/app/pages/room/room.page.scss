@@ -6,14 +6,38 @@
   margin-bottom: 16px;
 }
 
+.address {
+  text-align: center;
+  margin-left: 32px;
+  margin-right: 32px;
+}
+
 .room-pricing {
-  font-size: 16pt;
+  font-size: 14pt;
   letter-spacing: 0.4px;
   font-weight: bold;
+  margin: 0;
+
+}
+
+.booking-info-text {
+  margin: 0;
+  letter-spacing: 0.8px;
+  font-size: 10pt;
+  color: #2b2b2b;
 }
 
 ion-content {
   max-width: 1000px;
+}
+
+ion-rating {
+  text-align: center;
+  display: block;
+}
+
+.list-ios, .list-md {
+  margin-bottom: 0;
 }
 
 .map-preview {

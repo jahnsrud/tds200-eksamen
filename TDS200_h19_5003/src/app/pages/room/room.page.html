@@ -10,24 +10,17 @@
 <ion-content>
     <img [src]="room.imageUrl"/>
     <h1 class="room-title ion-text-center">{{room.name}}</h1>
-    <p class="room-pricing ion-text-center">{{room.priceInNok}}{{currencySuffix}}</p>
-    <p>{{room.address}}</p>
 
     <div class="ion-padding">
 
         <img [src]="mapPreviewImageUrl" (click)="openMap()" class="map-preview">
+        <p class="address">{{room.address}}</p>
 
         <div class="room-detail-container">
             <p>{{room.availability}}</p>
-            <ion-button (click)="bookNow()">Book Now</ion-button>
+            <p>Capacity: {{room.maxNumberOfPeople}} persons</p>
 
         </div>
-
-
-        <h2>Description</h2>
-        <p>Capacity: {{room.maxNumberOfPeople}} persons</p>
-
-        <p>{{room.description}}</p>
 
         <h2>Facilities</h2>
         <div class="room-detail-container">
@@ -39,8 +32,15 @@
 
         </div>
 
-        <div *ngIf="room.reviews > 0" class="reviews">
-            <h2>Reviews</h2>
+        <h2>Description</h2>
+
+        <p>{{room.description}}</p>
+
+        <h2>Reviews</h2>
+        <p *ngIf="room.reviews.length == 0">No reviews yet.</p>
+        <ion-button (click)="writeReview()" fill="outline">Write Review (BETA)</ion-button>
+
+        <div *ngIf="room.reviews.length > 0" class="reviews">
             <app-review *ngFor="let review of room.reviews" [review]="review"></app-review>
         </div>
 
@@ -50,6 +50,17 @@
 
 <ion-footer>
     <ion-toolbar>
-        <ion-button expand="block" (click)="bookNow()">Book Now</ion-button>
+        <ion-grid>
+            <ion-row class="ion-align-items-center">
+                <ion-col>
+                    <p class="booking-info-text">Available now</p>
+                    <p class="room-pricing">{{room.priceInNok}}{{currencySuffix}}</p>
+                </ion-col>
+                <ion-col class="ion-align-self-end">
+                    <ion-button expand="block" (click)="bookNow()" color="tertiary">Book Now</ion-button>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+
     </ion-toolbar>
 </ion-footer>

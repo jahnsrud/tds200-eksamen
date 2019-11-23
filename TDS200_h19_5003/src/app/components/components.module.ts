@@ -8,8 +8,8 @@ import {FormsModule} from '@angular/forms';
 
 @NgModule({
     imports: [IonicModule.forRoot(), FormsModule],
-    declarations: [MeetingRoomComponent, ReviewComponent, LoginFormComponent, RegisterFormComponent],
-    exports: [MeetingRoomComponent, ReviewComponent, LoginFormComponent, RegisterFormComponent]
+    declarations: [MeetingRoomComponent, ReviewComponent],
+    exports: [MeetingRoomComponent, ReviewComponent]
 })
 
 export class ComponentsModule {}

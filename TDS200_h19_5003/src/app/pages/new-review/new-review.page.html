@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>New Review</ion-title>
+    <ion-buttons slot="end">
+    <ion-button (click)="close()">
+      Done
+    </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <ion-rating [(ngModel)]="review.stars" readonly="false" size="large" (rateChange)="onRateChange($event)"></ion-rating>
+
+  <ion-item class="ion-no-padding">
+    <ion-textarea placeholder="Review" [(ngModel)]="review.comment" autocapitalize="on"></ion-textarea>
+  </ion-item>
+
+  <ion-button (click)="publish()" expand="block">Publish</ion-button>
+
+</ion-content>

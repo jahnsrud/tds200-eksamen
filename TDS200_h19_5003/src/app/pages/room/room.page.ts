@@ -6,6 +6,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {BookingPage} from '../booking/booking.page';
 import {AuthService} from '../../providers/auth.service';
 import {LoginPage} from '../login/login.page';
+import {NewReviewPage} from '../new-review/new-review.page';
 
 @Component({
     selector: 'app-room',
@@ -25,7 +26,6 @@ export class RoomPage implements OnInit {
                 private actionSheetController: ActionSheetController) {
 
         this.route.queryParams.subscribe(params => {
-            console.warn(params.room);
             if (this.router.getCurrentNavigation().extras.state) {
                 this.room = this.router.getCurrentNavigation().extras.state.room;
             }
@@ -99,5 +99,14 @@ export class RoomPage implements OnInit {
 
         return await modal.present();
 
+    }
+
+    async writeReview() {
+        const modal = await this.modalController.create({
+            component: NewReviewPage,
+            cssClass: 'j-modal'
+        });
+
+        return await modal.present();
     }
 }
