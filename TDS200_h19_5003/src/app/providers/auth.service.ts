@@ -10,8 +10,9 @@ export class AuthService {
   user: firebase.User = null;
 
   constructor(private fireAuth: AngularFireAuth) {
-    this.fireAuth.authState.subscribe((authData) => {
-      this.user = authData;
+    fireAuth.authState.subscribe((authData) => {
+        this.user = authData;
+
     });
 
   }
@@ -28,18 +29,19 @@ export class AuthService {
     await this.fireAuth.auth.signOut();
   }
 
-  async isLoggedIn() {
+  get isLoggedIn(): boolean {
     return this.user !== null;
 
   }
 
-  async getUser() {
-    if (this.isLoggedIn()) {
+  get getUser() {
+    if (this.isLoggedIn) {
       return this.user;
     }
   }
 
-
-
+  get currentUserId(): string {
+    return this.user ? this.user.uid : '';
+  }
 
 }

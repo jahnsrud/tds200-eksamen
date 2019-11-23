@@ -25,6 +25,7 @@ import {BookingPageModule} from './pages/booking/booking.module';
 import {BookingPage} from './pages/booking/booking.page';
 import {LoginFormComponent} from './components/login-form/login-form.component';
 import {RegisterFormComponent} from './components/register-form/register-form.component';
+import {AngularFireAuthGuardModule} from '@angular/fire/auth-guard';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyDDxcYzFb94gWtAAPAxQLlEjgewPfKf8gQ',
@@ -46,6 +47,7 @@ const firebaseConfig = {
     AngularFirestoreModule,
     AngularFireAuthModule,
     AngularFireStorageModule,
+    AngularFireAuthGuardModule,
     ComponentsModule,
     CameraPageModule,
     MapPageModule,

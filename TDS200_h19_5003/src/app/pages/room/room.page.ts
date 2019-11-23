@@ -1,9 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import Room from '../../models/Room';
-import {ModalController} from '@ionic/angular';
+import {ActionSheetController, ModalController} from '@ionic/angular';
 import {MapPage} from '../map/map.page';
 import {ActivatedRoute, Router} from '@angular/router';
 import {BookingPage} from '../booking/booking.page';
+import {AuthService} from '../../providers/auth.service';
 
 @Component({
     selector: 'app-room',
@@ -18,7 +19,9 @@ export class RoomPage implements OnInit {
 
     constructor(private modalController: ModalController,
                 private route: ActivatedRoute,
-                private router: Router) {
+                private router: Router,
+                private auth: AuthService,
+                private actionSheetController: ActionSheetController) {
 
         this.route.queryParams.subscribe(params => {
             if (this.router.getCurrentNavigation().extras.state) {
@@ -37,14 +40,48 @@ export class RoomPage implements OnInit {
     }
 
     async bookNow() {
-        const modal = await this.modalController.create({
-            component: BookingPage,
-            cssClass: 'j-modal',
-            componentProps: { room: this.room }
+
+        if (this.auth.isLoggedIn) {
+
+            const modal = await this.modalController.create({
+                component: BookingPage,
+                cssClass: 'j-modal',
+                componentProps: {room: this.room}
+            });
+
+            return await modal.present();
+        } else {
+            this.promptLogin();
+        }
+
+    }
+
+    async promptLogin() {
+        const actionSheet = await this.actionSheetController.create({
+            header: `Booking requires a user account`,
+            subHeader: 'Sign up for free to get started',
+            buttons: [{
+                text: 'Sign in',
+                role: 'default',
+                handler: () => {
+                    this.openLogin();
+                }
+            },
+                {
+                    text: 'Cancel',
+                    role: 'cancel',
+                    handler: () => {
+
+                    }
+                }],
+
         });
 
-        return await modal.present();
+        await actionSheet.present();
+    }
 
+    openLogin() {
+        this.router.navigate(['login']);
     }
 
     async openMap() {

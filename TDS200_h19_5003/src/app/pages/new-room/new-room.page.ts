@@ -7,6 +7,7 @@ import {RoomCreatorService} from '../../providers/room-creator.service';
 import * as mapboxgl from 'mapbox-gl';
 import * as MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 import {Location} from '@angular/common';
+import {AuthService} from '../../providers/auth.service';
 
 @Component({
   selector: 'app-new-room',
@@ -38,6 +39,7 @@ export class NewRoomPage implements OnInit {
   constructor(private imagePicker: ImagePicker,
               private toastController: ToastController,
               private modalController: ModalController,
+              private auth: AuthService,
               private location: Location,
               private roomCreator: RoomCreatorService,
               private actionSheetController: ActionSheetController) {
@@ -57,6 +59,10 @@ export class NewRoomPage implements OnInit {
       maxNumberOfPeople: 2
 
     };
+
+    if (!auth.isLoggedIn) {
+      this.close();
+    }
 
 
   }
@@ -195,14 +201,12 @@ export class NewRoomPage implements OnInit {
   }
 
   async promptUserForClosing() {
-
-
     const actionSheet = await this.actionSheetController.create({
       header: `Delete this room?`,
       subHeader: 'Your progress will not be saved',
       buttons: [{
         text: 'Delete',
-        role: 'default',
+        role: 'destructive',
         icon: 'trash',
         handler: () => {
           this.close();

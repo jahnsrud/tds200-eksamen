@@ -23,12 +23,22 @@ export class LoginPage implements OnInit {
   // Makes Angular recognize our Enum
   FormType = FormType;
 
-  constructor(private authService: AuthService,
+  constructor(private auth: AuthService,
               private toastController: ToastController,
               private router: Router) {
+
+    if (auth.isLoggedIn) {
+      console.warn('Already logged in. Should dismiss.');
+      this.redirectToStart();
+    }
+
+    console.log(auth.isLoggedIn);
+    console.log(auth.getUser);
+
   }
 
   ngOnInit() {
+
   }
 
   async presentToast(message) {

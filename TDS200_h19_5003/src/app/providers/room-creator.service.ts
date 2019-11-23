@@ -1,10 +1,9 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {AngularFireStorage} from '@angular/fire/storage';
 import {v4 as uuid} from 'uuid';
-import Room, {Review} from '../models/Room';
+import Room from '../models/Room';
 import {AngularFirestore} from '@angular/fire/firestore';
 import {AuthService} from './auth.service';
-import {first} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -31,26 +30,24 @@ export class RoomCreatorService {
 
   async createAndUploadRoom(room: Room) {
 
-    // const uploadedImageUrl = await this.uploadImageToDatabase();
-    const rooms = this.firestore.collection<Room>('rooms');
+    if (this.auth.isLoggedIn) {
 
-    // TODO: FIX
-    // const loggedInUser = await this.auth.user.pipe(first()).toPromise();
+      await this.firestore.collection('rooms').add({
+        owner: this.auth.currentUserId,
+        name: room.name,
+        imageUrl: room.imageUrl,
+        priceInNok: room.priceInNok,
+        description: room.description,
+        address: room.address,
+        maxNumberOfPeople: room.maxNumberOfPeople,
+        availability: room.availability,
+        facilities: room.facilities,
+        coordinates: room.coordinates,
+        reviews: []
 
-    await this.firestore.collection('rooms').add({
-      owner: 'OWNER_COMING_SOON',
-      name: room.name,
-      imageUrl: room.imageUrl,
-      priceInNok: room.priceInNok,
-      description: room.description,
-      address: room.address,
-      maxNumberOfPeople: room.maxNumberOfPeople,
-      availability: room.availability,
-      facilities: room.facilities,
-      coordinates: room.coordinates,
-      reviews: []
+      });
 
-    });
+    }
 
   }
 

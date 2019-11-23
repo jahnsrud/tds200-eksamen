@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import Room, {Coordinates, Review} from '../../models/Room';
+import {AuthService} from '../../providers/auth.service';
 
 @Component({
   selector: 'app-my-rooms',
@@ -11,7 +12,8 @@ export class MyRoomsPage implements OnInit {
 
   rooms: Room[] = [];
 
-  constructor(private router: Router) {
+  constructor(private router: Router,
+              private auth: AuthService) {
 
     const coordinatesOslo: Coordinates = {
       longitude: '10.757933',
@@ -77,6 +79,12 @@ export class MyRoomsPage implements OnInit {
   }
 
   addRoom() {
-    this.router.navigate(['new-room']);
+
+    if (this.auth.isLoggedIn) {
+      this.router.navigate(['new-room']);
+    } else {
+      this.router.navigate(['login']);
+
+    }
   }
 }

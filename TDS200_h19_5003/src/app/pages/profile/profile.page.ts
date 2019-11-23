@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthService} from '../../providers/auth.service';
-import {AngularFireAuth} from '@angular/fire/auth';
 import {Router} from '@angular/router';
 
 @Component({
@@ -9,10 +8,8 @@ import {Router} from '@angular/router';
   styleUrls: ['./profile.page.scss'],
 })
 export class ProfilePage implements OnInit {
-  email: string;
 
   constructor(private authService: AuthService,
-              private auth: AngularFireAuth,
               private router: Router) {
   }
 
