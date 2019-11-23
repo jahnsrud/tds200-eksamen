@@ -9,7 +9,7 @@ import { TabsPage } from './tabs.page';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'tabs',
     component: TabsPage,
     children: [
       { path: 'tab1', loadChildren: '../discovery/discovery.module#DiscoveryPageModule' },
@@ -19,7 +19,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: '',
+    redirectTo: '/tabs/tab1',
     pathMatch: 'full'
   }
 ];

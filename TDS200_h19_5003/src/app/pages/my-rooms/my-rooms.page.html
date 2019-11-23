@@ -12,7 +12,7 @@
 <ion-content class="ion-padding">
 
   <ion-list>
-    <ion-item *ngFor="let room of rooms" class="ion-no-padding" lines="none">
+    <ion-item *ngFor="let room of myRooms$ | async; trackBy: trackFunc" lines="none" class="ion-no-padding">
       <app-meeting-room [room]="room" class="ion-no-padding"></app-meeting-room>
     </ion-item>
   </ion-list>

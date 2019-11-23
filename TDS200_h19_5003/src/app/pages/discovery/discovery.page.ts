@@ -12,7 +12,7 @@ export class DiscoveryPage implements OnInit {
 
   rooms$: Observable<Room[]>;
 
-  constructor(public firestore: AngularFirestore) { }
+  constructor(private firestore: AngularFirestore) { }
 
   ngOnInit() {
     this.rooms$ = this.firestore.collection('rooms').valueChanges({idField: 'id'}) as Observable<Room[]>;
@@ -20,7 +20,6 @@ export class DiscoveryPage implements OnInit {
   }
 
   trackFunc(index, item) {
-    // console.log(item, index);
     return item.id;
   }
 

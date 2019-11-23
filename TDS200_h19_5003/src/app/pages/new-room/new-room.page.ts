@@ -235,7 +235,7 @@ export class NewRoomPage implements OnInit {
 
     const file = files[0];
 
-    console.error(file);
+    console.log(file);
 
     const uploadedImageUrl = await this.roomCreator.uploadImageFile(file);
     console.log(uploadedImageUrl);

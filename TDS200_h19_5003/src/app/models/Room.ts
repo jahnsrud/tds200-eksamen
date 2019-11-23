@@ -1,5 +1,5 @@
 export default interface Room {
-    id: string;
+    id?: string;
     name: string;
     owner: string;
     imageUrl: string;
@@ -19,6 +19,7 @@ export interface Coordinates {
 }
 
 export interface Review {
+    id?: string;
     stars: number;
     author: string;
     comment: string;
