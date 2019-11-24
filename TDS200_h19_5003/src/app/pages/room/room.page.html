@@ -41,6 +41,7 @@
         <p>{{room.description}}</p>
 
         <h2>Reviews</h2>
+        <p *ngIf="room.reviews.length > 0">{{roomService.averageRating(room).toFixed(1)}}</p>
         <p *ngIf="room.reviews.length == 0">No reviews yet.</p>
         <ion-button (click)="writeReview()">Write Review</ion-button>
 

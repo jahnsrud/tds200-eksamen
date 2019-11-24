@@ -79,6 +79,17 @@ export class RoomEditorService {
     return `app-img-${uuid()}.jpg`;
   }
 
+  averageRating(room: Room): number {
+    let rating = 0;
+
+    for (const review of room.reviews) {
+      rating += review.stars;
+    }
+
+    return rating / room.reviews.length;
+
+  }
+
   async postReview(review: Review, room: Room) {
 
     // TODO: Detect if user has rented room earlier
