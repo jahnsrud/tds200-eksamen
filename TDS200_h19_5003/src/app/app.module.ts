@@ -13,7 +13,6 @@ import {AngularFireAuthModule} from '@angular/fire/auth';
 import {AngularFireModule} from '@angular/fire';
 import {AngularFirestoreModule} from '@angular/fire/firestore';
 import {AngularFireStorageModule} from '@angular/fire/storage';
-import {ImagePicker} from '@ionic-native/image-picker/ngx';
 import {CameraPage} from './pages/camera/camera.page';
 import {CameraPageModule} from './pages/camera/camera.module';
 import {MapPage} from './pages/map/map.page';
@@ -67,7 +66,6 @@ const firebaseConfig = {
         StatusBar,
         SplashScreen,
         Camera,
-        ImagePicker,
         {provide: RouteReuseStrategy, useClass: IonicRouteStrategy}
     ],
     bootstrap: [AppComponent]
