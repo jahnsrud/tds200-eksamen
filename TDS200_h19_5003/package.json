@@ -32,7 +32,7 @@
     "cordova-plugin-camera": "^4.1.0",
     "core-js": "^2.6.10",
     "firebase": "^7.4.0",
-    "ionic-rating": "^2.0.0",
+    "ionic4-star-rating": "^1.1.1",
     "mapbox-gl": "^1.5.0",
     "moment": "^2.24.0",
     "rxjs": "~6.5.3",

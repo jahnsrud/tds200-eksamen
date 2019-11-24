@@ -31,7 +31,6 @@ import {NewRoomPage} from './pages/new-room/new-room.page';
 import {NewRoomPageModule} from './pages/new-room/new-room.module';
 import {NewReviewPage} from './pages/new-review/new-review.page';
 import {NewReviewPageModule} from './pages/new-review/new-review.module';
-import {IonicRatingModule} from 'ionic-rating';
 
 const firebaseConfig = {
     apiKey: 'AIzaSyDDxcYzFb94gWtAAPAxQLlEjgewPfKf8gQ',
@@ -54,7 +53,6 @@ const firebaseConfig = {
         AngularFireAuthModule,
         AngularFireStorageModule,
         AngularFireAuthGuardModule,
-        IonicRatingModule,
         LoginPageModule,
         NewRoomPageModule,
         NewReviewPageModule,

@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Review} from '../../models/Room';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-review',
@@ -9,9 +10,12 @@ import {Review} from '../../models/Room';
 export class ReviewComponent implements OnInit {
 
   @Input() review: Review;
+  humanReadableTimestamp: string;
 
   constructor() { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.humanReadableTimestamp = moment(this.review.date.toDate()).fromNow();
+  }
 
 }

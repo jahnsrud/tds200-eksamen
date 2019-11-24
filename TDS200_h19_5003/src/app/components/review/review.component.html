@@ -1,6 +1,15 @@
 <div class="review-component">
   <p>{{review.author}}</p>
-  <ion-rating [(ngModel)]="review.stars" readonly="true" size="default"></ion-rating>
+  <ionic4-star-rating #rating
+                      activeIcon = "ios-star"
+                      defaultIcon = "ios-star"
+                      activeColor = "#eea769"
+                      defaultColor = "#d4d4d4"
+                      readonly="true"
+                      [rating]="review.stars"
+                      fontSize = "28px">
+
+  </ionic4-star-rating>
   <p>{{review.comment}}</p>
-  <p>{{review.date}}</p>
+  <p>{{humanReadableTimestamp}}</p>
 </div>

@@ -5,10 +5,10 @@ import {ReviewComponent} from './review/review.component';
 import {LoginFormComponent} from './login-form/login-form.component';
 import {RegisterFormComponent} from './register-form/register-form.component';
 import {FormsModule} from '@angular/forms';
-import {IonicRatingModule} from 'ionic-rating';
+import {StarRatingModule} from 'ionic4-star-rating';
 
 @NgModule({
-    imports: [IonicModule.forRoot(), FormsModule, IonicRatingModule],
+    imports: [IonicModule.forRoot(), FormsModule, StarRatingModule],
     declarations: [MeetingRoomComponent, ReviewComponent],
     exports: [MeetingRoomComponent, ReviewComponent]
 })
