@@ -7,7 +7,7 @@ import {BookingPage} from '../booking/booking.page';
 import {AuthService} from '../../providers/auth.service';
 import {LoginPage} from '../login/login.page';
 import {NewReviewPage} from '../new-review/new-review.page';
-import {RoomCreatorService} from '../../providers/room-creator.service';
+import {RoomEditorService} from '../../providers/room-editor.service';
 import {RoomBookingService} from '../../providers/room-booking.service';
 
 @Component({
@@ -28,7 +28,7 @@ export class RoomPage implements OnInit {
                 private route: ActivatedRoute,
                 private auth: AuthService,
                 private bookingService: RoomBookingService,
-                private roomService: RoomCreatorService,
+                private roomService: RoomEditorService,
                 private actionSheetController: ActionSheetController) {
 
         this.route.queryParams.subscribe(params => {
@@ -113,7 +113,13 @@ export class RoomPage implements OnInit {
     async openMap() {
         const modal = await this.modalController.create({
             component: MapPage,
-            cssClass: 'j-modal'
+            cssClass: 'j-modal',
+            componentProps: {
+                coordinates: this.room.coordinates,
+                name: this.room.name,
+                address: this.room.address
+            }
+
         });
 
         return await modal.present();
@@ -123,7 +129,10 @@ export class RoomPage implements OnInit {
     async writeReview() {
         const modal = await this.modalController.create({
             component: NewReviewPage,
-            cssClass: 'j-modal'
+            cssClass: 'j-modal',
+            componentProps: {
+                room: this.room,
+            }
         });
 
         return await modal.present();

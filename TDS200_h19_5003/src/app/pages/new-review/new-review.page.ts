@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import {Review} from '../../models/Room';
+import {Component, Input, OnInit} from '@angular/core';
+import Room, {Review} from '../../models/Room';
 import {ModalController} from '@ionic/angular';
+import {RoomEditorService} from '../../providers/room-editor.service';
 
 @Component({
   selector: 'app-new-review',
@@ -9,9 +10,11 @@ import {ModalController} from '@ionic/angular';
 })
 export class NewReviewPage implements OnInit {
 
+  @Input() room: Room;
   review = {} as Review;
 
-  constructor(private modalController: ModalController) { }
+  constructor(private modalController: ModalController,
+              private roomService: RoomEditorService) { }
 
   ngOnInit() {
   }
@@ -21,8 +24,8 @@ export class NewReviewPage implements OnInit {
     console.warn(this.review.stars);
   }
 
-  publish() {
-
+  async publish() {
+    await this.roomService.postReview(this.review, this.room);
   }
 
   close() {

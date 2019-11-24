@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import Room, {Coordinates} from '../../models/Room';
 import {ActionSheetController, ModalController, ToastController} from '@ionic/angular';
 import {CameraPage} from '../camera/camera.page';
-import {RoomCreatorService} from '../../providers/room-creator.service';
+import {RoomEditorService} from '../../providers/room-editor.service';
 import * as mapboxgl from 'mapbox-gl';
 import * as MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 import {Location} from '@angular/common';
@@ -40,7 +40,7 @@ export class NewRoomPage implements OnInit {
               private modalController: ModalController,
               private auth: AuthService,
               private location: Location,
-              private roomCreator: RoomCreatorService,
+              private roomCreator: RoomEditorService,
               private actionSheetController: ActionSheetController) {
 
     this.room = {

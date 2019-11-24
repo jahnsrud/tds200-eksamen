@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {ModalController} from '@ionic/angular';
 import * as mapboxgl from 'mapbox-gl';
 import * as MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
@@ -11,6 +11,9 @@ import * as MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 export class MapPage implements OnInit {
 
   map: mapboxgl;
+  @Input() coordinates: Coordinates;
+  @Input() name: string;
+  @Input() address: string;
 
   constructor(private modalController: ModalController) { }
   ngOnInit() {
@@ -29,10 +32,18 @@ export class MapPage implements OnInit {
 
 
     this.map.on('load', () => {
-
       this.map.resize();
 
     });
+
+    this.map.addControl(new mapboxgl.GeolocateControl({
+      positionOptions: {
+        enableHighAccuracy: true
+      },
+      trackUserLocation: true
+    }));
+
+    new mapboxgl.Marker().setLngLat([this.coordinates.longitude, this.coordinates.latitude]).addTo(this.map);
 
 
   }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Camera, CameraOptions} from '@ionic-native/camera/ngx';
 import {ModalController, ToastController} from '@ionic/angular';
-import {RoomCreatorService} from '../../providers/room-creator.service';
+import {RoomEditorService} from '../../providers/room-editor.service';
 
 @Component({
   selector: 'app-camera',
@@ -23,7 +23,7 @@ export class CameraPage implements OnInit {
   };
 
   constructor(private camera: Camera,
-              private roomCreator: RoomCreatorService,
+              private roomCreator: RoomEditorService,
               private toastController: ToastController,
               private modalController: ModalController) { }
 

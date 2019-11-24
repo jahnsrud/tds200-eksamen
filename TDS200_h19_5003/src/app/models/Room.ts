@@ -27,5 +27,5 @@ export interface Review {
     stars: number;
     author: string;
     comment: string;
-    date: string;
+    date: Timestamp;
 }

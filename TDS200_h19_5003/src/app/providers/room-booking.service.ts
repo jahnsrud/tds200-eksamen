@@ -17,8 +17,9 @@ export class RoomBookingService {
 
     await this.firestore.doc(`rooms/${room.id}`).update({
       bookedBy: this.auth.currentUserId,
-      bookedUntil: firebase.firestore.Timestamp.fromDate(requestedDate),
+        bookedUntil: firebase.firestore.Timestamp.fromDate(requestedDate),
     });
+
 
   }
 

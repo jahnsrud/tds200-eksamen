@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {AngularFireStorage} from '@angular/fire/storage';
 import {v4 as uuid} from 'uuid';
-import Room from '../models/Room';
+import Room, {Review} from '../models/Room';
 import {AngularFirestore} from '@angular/fire/firestore';
 import {AuthService} from './auth.service';
 import * as firebase from 'firebase';
@@ -9,7 +9,7 @@ import * as firebase from 'firebase';
 @Injectable({
   providedIn: 'root'
 })
-export class RoomCreatorService {
+export class RoomEditorService {
 
   constructor(private firestore: AngularFirestore,
               private fireStorage: AngularFireStorage,
@@ -49,7 +49,7 @@ export class RoomCreatorService {
 
   async deleteRoom(room: Room) {
     this.firestore.doc(`rooms/${room.id}`).delete().catch(error => {
-          console.log(error);
+      console.log(error);
     }).then(() => console.log(`Deleting post (${room.id}) in (${room})`));
 
   }
@@ -78,5 +78,25 @@ export class RoomCreatorService {
   get randomId(): string {
     return `app-img-${uuid()}.jpg`;
   }
+
+  async postReview(review: Review, room: Room) {
+
+    // TODO: Detect if user has rented room earlier
+
+    if (this.auth.isLoggedIn) {
+
+      review.author = this.auth.currentUserId;
+
+      // Assigns current date to a timestamp format.
+      review.date = firebase.firestore.Timestamp.fromDate(new Date());
+
+      await this.firestore.doc(`rooms/${room.id}`).update({
+        // Appends the Review object to our reviews array using arrayUnion.
+        reviews: firebase.firestore.FieldValue.arrayUnion(review)
+      });
+
+    }
+  }
+
 
 }
