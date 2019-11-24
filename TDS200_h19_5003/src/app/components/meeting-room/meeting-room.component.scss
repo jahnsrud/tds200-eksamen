@@ -51,11 +51,12 @@
       letter-spacing: 0.8px;
       font-weight: bold;
       padding: 8px 24px;
-      color: white;
-      width: fit-content;
-      background: black;
+      width: auto;
+      border: 1px solid #d33939;
+      color: #d33939;
       border-radius: 16px;
       margin: 0;
+      text-align: center;
     }
 
     .capacity-icon {

@@ -3,7 +3,7 @@
     <ion-title>New Review</ion-title>
     <ion-buttons slot="end">
     <ion-button (click)="close()">
-      Done
+      Cancel
     </ion-button>
     </ion-buttons>
   </ion-toolbar>
@@ -18,14 +18,14 @@
                       defaultColor = "#d4d4d4"
                       readonly="false"
                       rating="0"
-                      fontSize = "32px"
+                      fontSize = "44px"
                       (ratingChanged)="onRateChange($event)">
   </ionic4-star-rating>
 
-  <ion-item class="ion-no-padding">
-    <ion-textarea placeholder="Review" [(ngModel)]="review.comment" autocapitalize="on"></ion-textarea>
+  <ion-item class="ion-no-padding" lines="none">
+    <ion-textarea class="review-text" placeholder="Review" [(ngModel)]="review.comment" autocapitalize="on"></ion-textarea>
   </ion-item>
 
-  <ion-button (click)="publish()" expand="block">Publish</ion-button>
+  <ion-button (click)="publish()" [disabled]="review.stars == 0" expand="block">Publish</ion-button>
 
 </ion-content>

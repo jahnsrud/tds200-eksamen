@@ -51,4 +51,11 @@ export class MapPage implements OnInit {
   close() {
     this.modalController.dismiss();
   }
+
+  directions() {
+
+    const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${this.coordinates.latitude},${this.coordinates.longitude}`;
+    window.open(mapsUrl, '_system');
+
+  }
 }

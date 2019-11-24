@@ -2,7 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {ModalController} from '@ionic/angular';
 import Room from '../../models/Room';
 import {RoomBookingService} from '../../providers/room-booking.service';
-import moment = require('moment');
+import * as moment from 'moment';
 import {AuthService} from '../../providers/auth.service';
 
 @Component({

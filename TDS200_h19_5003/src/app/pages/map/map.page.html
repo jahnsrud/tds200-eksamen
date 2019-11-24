@@ -1,5 +1,11 @@
 <ion-header>
   <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="directions()">
+        <ion-icon slot="icon-only" name="navigate"></ion-icon>
+        Directions
+      </ion-button>
+    </ion-buttons>
     <ion-title>Map</ion-title>
     <ion-buttons slot="end">
       <ion-button (click)="close()">

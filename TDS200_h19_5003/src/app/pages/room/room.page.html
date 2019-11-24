@@ -41,6 +41,17 @@
         <p>{{room.description}}</p>
 
         <h2>Reviews</h2>
+        <ionic4-star-rating *ngIf="room.reviews.length > 0" #rating
+                            activeIcon = "ios-star"
+                            defaultIcon = "ios-star"
+                            activeColor = "#eea769"
+                            defaultColor = "#d4d4d4"
+                            readonly="true"
+                            halfStar="true"
+                            [rating]="roomService.averageRating(room)"
+                            fontSize = "16px">
+        </ionic4-star-rating>
+
         <p *ngIf="room.reviews.length > 0">{{roomService.averageRating(room).toFixed(1)}}</p>
         <p *ngIf="room.reviews.length == 0">No reviews yet.</p>
         <ion-button (click)="writeReview()">Write Review</ion-button>
@@ -58,7 +69,7 @@
         <ion-grid>
             <ion-row class="ion-align-items-center">
                 <ion-col>
-                    <p class="booking-info-text">Available now</p>
+                    <p class="booking-info-text">1 day</p>
                     <p class="room-pricing">{{room.priceInNok}}{{currencySuffix}}</p>
                 </ion-col>
                 <ion-col class="ion-align-self-end">

@@ -14,15 +14,15 @@ export class NewReviewPage implements OnInit {
   review = {} as Review;
 
   constructor(private modalController: ModalController,
-              private roomService: RoomEditorService) { }
+              private roomService: RoomEditorService) {
+    this.review.stars = 0;
+  }
 
   ngOnInit() {
   }
 
   onRateChange($event: number) {
-    console.error($event);
     this.review.stars = $event;
-    console.warn(this.review.stars);
   }
 
   async publish() {

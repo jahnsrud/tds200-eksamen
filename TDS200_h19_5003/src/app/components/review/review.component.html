@@ -1,15 +1,24 @@
 <div class="review-component">
-  <p>{{review.author}}</p>
-  <ionic4-star-rating #rating
-                      activeIcon = "ios-star"
-                      defaultIcon = "ios-star"
-                      activeColor = "#eea769"
-                      defaultColor = "#d4d4d4"
-                      readonly="true"
-                      [rating]="review.stars"
-                      fontSize = "28px">
+    <p class="time-ago">{{humanReadableTimestamp}}</p>
 
-  </ionic4-star-rating>
-  <p>{{review.comment}}</p>
-  <p>{{humanReadableTimestamp}}</p>
+    <ion-row class="ion-align-items-center">
+        <ion-col size="2">
+            <div class="profile-picture"></div>
+        </ion-col>
+        <ion-col size="10" class="ion-align-self-end">
+            <p class="author">{{review.author}}</p>
+        </ion-col>
+    </ion-row>
+
+    <ionic4-star-rating #rating
+                        activeIcon="ios-star"
+                        defaultIcon="ios-star"
+                        activeColor="#eea769"
+                        defaultColor="#d4d4d4"
+                        readonly="true"
+                        [rating]="review.stars"
+                        fontSize="18px">
+
+    </ionic4-star-rating>
+    <p class="comment">{{review.comment}}</p>
 </div>
