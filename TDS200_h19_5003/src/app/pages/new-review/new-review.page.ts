@@ -20,6 +20,7 @@ export class NewReviewPage implements OnInit {
   }
 
   onRateChange($event: number) {
+    console.error($event);
     this.review.stars = $event;
     console.warn(this.review.stars);
   }

@@ -11,7 +11,7 @@
 
 <ion-content class="ion-padding">
 
-  <ion-rating [(ngModel)]="review.stars" readonly="false" size="large" (rateChange)="onRateChange($event)"></ion-rating>
+  <ion-rating [(ngModel)]="review.stars" readonly="false" size="large" (ngModelChange)="onRateChange($event)"></ion-rating>
 
   <ion-item class="ion-no-padding">
     <ion-textarea placeholder="Review" [(ngModel)]="review.comment" autocapitalize="on"></ion-textarea>
