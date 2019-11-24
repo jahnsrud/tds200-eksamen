@@ -15,6 +15,7 @@ import {AngularFirestore} from '@angular/fire/firestore';
 export class MyRoomsPage implements OnInit {
 
   myRooms$: Observable<Room[]>;
+  myRentedRooms$: Observable<Room[]>;
 
   constructor(private auth: AuthService,
               private modalController: ModalController,
@@ -33,7 +34,12 @@ export class MyRoomsPage implements OnInit {
       this.myRooms$ = this.firestore.collection('rooms', ref =>
           ref.where('owner', '==', this.auth.currentUserId)
       ).valueChanges({idField: 'id'}) as Observable<Room[]>;
-    }, 500);
+
+      this.myRentedRooms$ = this.firestore.collection('rooms', ref =>
+          ref.where('bookedByUser', '==', this.auth.currentUserId)
+      ).valueChanges({idField: 'id'}) as Observable<Room[]>;
+
+    }, 550);
 
 
   }

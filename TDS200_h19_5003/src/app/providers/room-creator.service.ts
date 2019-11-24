@@ -4,6 +4,7 @@ import {v4 as uuid} from 'uuid';
 import Room from '../models/Room';
 import {AngularFirestore} from '@angular/fire/firestore';
 import {AuthService} from './auth.service';
+import * as firebase from 'firebase';
 
 @Injectable({
   providedIn: 'root'
@@ -19,6 +20,9 @@ export class RoomCreatorService {
 
     if (this.auth.isLoggedIn) {
 
+      // Workaround for the AngularFire query to fetch correctly
+      const initialDate = new Date(0);
+
       await this.firestore.collection('rooms').add({
         owner: this.auth.currentUserId,
         name: room.name,
@@ -28,7 +32,7 @@ export class RoomCreatorService {
         address: room.address,
         maxNumberOfPeople: room.maxNumberOfPeople,
         bookedByUser: room.bookedByUser,
-        bookedUntil: room.bookedUntil,
+        bookedUntil: initialDate,
         facilities: room.facilities,
         coordinates: room.coordinates,
         reviews: []

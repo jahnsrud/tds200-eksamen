@@ -8,6 +8,7 @@ import {AuthService} from '../../providers/auth.service';
 import {LoginPage} from '../login/login.page';
 import {NewReviewPage} from '../new-review/new-review.page';
 import {RoomCreatorService} from '../../providers/room-creator.service';
+import {RoomBookingService} from '../../providers/room-booking.service';
 
 @Component({
     selector: 'app-room',
@@ -20,11 +21,13 @@ export class RoomPage implements OnInit {
     currencySuffix = ',-';
     mapPreviewImageUrl: string;
     isMyRoom: boolean;
+    private ActionSheetButton: any;
 
     constructor(private modalController: ModalController,
                 private router: Router,
                 private route: ActivatedRoute,
                 private auth: AuthService,
+                private bookingService: RoomBookingService,
                 private roomService: RoomCreatorService,
                 private actionSheetController: ActionSheetController) {
 
@@ -48,6 +51,13 @@ export class RoomPage implements OnInit {
         if (this.room.owner === this.auth.currentUserId) {
             this.isMyRoom = true;
         }
+
+        if (this.bookingService.isRoomBooked(this.room)) {
+            console.log('Is booked!');
+        } else {
+            console.log('Not booked');
+        }
+
 
     }
 
@@ -131,6 +141,13 @@ export class RoomPage implements OnInit {
                 }
             },
                 {
+                    text: 'Clear Booking',
+                    role: 'destructive',
+                    handler: () => {
+                        this.cancelResevations();
+                    }
+                },
+                {
                     text: 'Cancel',
                     role: 'cancel',
                     handler: () => {
@@ -149,5 +166,9 @@ export class RoomPage implements OnInit {
         // TODO: go to previous page instead of back to start
         this.router.navigate(['']);
 
+    }
+
+    async cancelResevations() {
+        this.bookingService.clearBooking(this.room);
     }
 }

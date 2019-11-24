@@ -12,6 +12,7 @@ export class BookingPage implements OnInit {
 
   @Input() room: Room;
   currencySuffix = ',-';
+  requestDate: any;
 
   constructor(private modalController: ModalController,
               private roomBooking: RoomBookingService) {
@@ -26,7 +27,9 @@ export class BookingPage implements OnInit {
 
   async confirmBooking() {
 
-    await this.roomBooking.book(this.room);
+    // Convert date to make AngularFire happy:
+    const convertedDate = new Date(this.requestDate);
+    await this.roomBooking.book(this.room, convertedDate);
 
     this.close();
   }

@@ -8,6 +8,7 @@ import * as mapboxgl from 'mapbox-gl';
 import * as MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 import {Location} from '@angular/common';
 import {AuthService} from '../../providers/auth.service';
+import * as firebase from 'firebase';
 
 @Component({
   selector: 'app-new-room',
@@ -52,7 +53,7 @@ export class NewRoomPage implements OnInit {
       address: '',
       description: '',
       bookedByUser: '',
-      bookedUntil: '',
+      bookedUntil: null,
       facilities: [],
       priceInNok: null,
       reviews: [],

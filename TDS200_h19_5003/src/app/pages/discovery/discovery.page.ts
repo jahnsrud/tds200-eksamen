@@ -15,7 +15,19 @@ export class DiscoveryPage implements OnInit {
   constructor(private firestore: AngularFirestore) { }
 
   ngOnInit() {
-    this.rooms$ = this.firestore.collection('rooms').valueChanges({idField: 'id'}) as Observable<Room[]>;
+
+    // Gets all rooms
+    // this.rooms$ = this.firestore.collection('rooms').valueChanges({idField: 'id'}) as Observable<Room[]>;
+
+    const date = new Date();
+    console.log(date);
+
+    // Gets all rooms available now
+
+    this.rooms$ = this.firestore.collection('rooms', ref =>
+        ref.where('bookedUntil', '<', date)
+    ).valueChanges({idField: 'id'}) as Observable<Room[]>;
+
 
   }
 

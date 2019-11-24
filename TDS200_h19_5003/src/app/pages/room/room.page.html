@@ -22,7 +22,6 @@
         <p class="address">{{room.address}}</p>
 
         <div class="room-detail-container">
-            <p>{{room.availability}}</p>
             <p>Capacity: {{room.maxNumberOfPeople}} persons</p>
 
         </div>
@@ -53,7 +52,7 @@
 
 </ion-content>
 
-<ion-footer>
+<ion-footer *ngIf="!bookingService.isRoomBooked(room)">
     <ion-toolbar>
         <ion-grid>
             <ion-row class="ion-align-items-center">

@@ -1,3 +1,6 @@
+import * as firebase from 'firebase';
+import Timestamp = firebase.firestore.Timestamp;
+
 export default interface Room {
     id?: string;
     name: string;
@@ -9,7 +12,7 @@ export default interface Room {
     maxNumberOfPeople: number;
     facilities: string[];
     bookedByUser: string;
-    bookedUntil: string;
+    bookedUntil: Timestamp;
     coordinates: Coordinates;
     reviews: Review[];
 }
