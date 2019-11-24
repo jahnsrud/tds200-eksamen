@@ -26,6 +26,7 @@ export interface Review {
     id?: string;
     stars: number;
     author: string;
+    name: string;
     comment: string;
     date: Timestamp;
 }

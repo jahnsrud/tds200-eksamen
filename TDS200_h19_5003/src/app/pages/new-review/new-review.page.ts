@@ -27,6 +27,7 @@ export class NewReviewPage implements OnInit {
 
   async publish() {
     await this.roomService.postReview(this.review, this.room);
+    this.close();
   }
 
   close() {

@@ -97,6 +97,7 @@ export class RoomEditorService {
     if (this.auth.isLoggedIn) {
 
       review.author = this.auth.currentUserId;
+      review.name = this.auth.getUser.email;
 
       // Assigns current date to a timestamp format.
       review.date = firebase.firestore.Timestamp.fromDate(new Date());
