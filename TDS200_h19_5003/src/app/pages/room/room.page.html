@@ -42,7 +42,7 @@
 
         <h2>Reviews</h2>
         <p *ngIf="room.reviews.length == 0">No reviews yet.</p>
-        <ion-button (click)="writeReview()" fill="outline">Write Review (BETA)</ion-button>
+        <ion-button (click)="writeReview()" fill="outline">Write Review</ion-button>
 
         <div *ngIf="room.reviews.length > 0" class="reviews">
             <app-review *ngFor="let review of room.reviews" [review]="review"></app-review>

@@ -17,6 +17,7 @@
   letter-spacing: 0.4px;
   font-weight: bold;
   margin: 0;
+  color: white;
 
 }
 
@@ -24,7 +25,7 @@
   margin: 0;
   letter-spacing: 0.8px;
   font-size: 10pt;
-  color: #2b2b2b;
+  color: white;
 }
 
 ion-content {
@@ -34,6 +35,10 @@ ion-content {
 ion-rating {
   text-align: center;
   display: block;
+}
+
+ion-footer ion-toolbar {
+    --background: #3a3a3a;
 }
 
 .list-ios, .list-md {

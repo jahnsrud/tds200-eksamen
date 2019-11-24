@@ -18,7 +18,7 @@
     </ion-item>
   </ion-list>
 
-  <h2>Rented Rooms</h2>
+  <h2 *ngIf="(myRentedRooms$| async)?.length > 0;">Rented Rooms</h2>
   <ion-list>
     <ion-item *ngFor="let room of myRentedRooms$ | async; trackBy: trackFunc" lines="none" class="ion-no-padding">
       <app-meeting-room [room]="room" class="ion-no-padding"></app-meeting-room>

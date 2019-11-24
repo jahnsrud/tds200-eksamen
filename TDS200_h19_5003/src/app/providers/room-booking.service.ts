@@ -31,7 +31,6 @@ export class RoomBookingService {
 
   isRoomBooked(room: Room) {
 
-    console.log('Check: ');
     console.log(`Booked Until: ${room.bookedUntil.toMillis()} -- ${new Date().getMilliseconds()}`);
 
     if (room.bookedUntil.toMillis() > new Date().getMilliseconds()) {

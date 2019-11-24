@@ -1,7 +1,17 @@
+ion-content {
+  --background: #3a3a3a;
+}
+
 .pricing-total {
   background: #eeeeee;
   padding: 16px;
   border-radius: var(--default-border-radius);
+
+  .price {
+    letter-spacing: 0.8px;
+    font-weight: bold;
+  }
+
 }
 
 .payment-methods {
@@ -9,5 +19,13 @@
     padding: 32px;
     border: 1px solid gray;
     border-radius: var(--default-border-radius);
+
+    .method-type {
+      font-weight: bold;
+      font-size: 14pt;
+    }
+    .method-description {
+
+    }
   }
 }
