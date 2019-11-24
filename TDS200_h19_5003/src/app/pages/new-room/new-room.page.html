@@ -92,7 +92,7 @@
             <ion-button (click)="openCamera()" color="dark">Take Picture</ion-button>
             <ion-button (click)="openPhotoPicker()" color="dark">Select Pictures...</ion-button>
 
-            <input type="file" (change)="inputChange($event.target.files)" name="myFile">
+            <input type="file" (change)="inputChange($event.target.files)" name="myFile" accept="image/*">
 
         </div>
         <div class="room-creator-section publish-section">

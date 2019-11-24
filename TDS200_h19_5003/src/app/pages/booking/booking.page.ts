@@ -24,9 +24,9 @@ export class BookingPage implements OnInit {
     this.modalController.dismiss();
   }
 
-  confirmBooking() {
+  async confirmBooking() {
 
-    this.roomBooking.book(this.room);
+    await this.roomBooking.book(this.room);
 
     this.close();
   }

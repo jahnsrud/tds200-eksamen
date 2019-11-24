@@ -7,6 +7,7 @@ import {BookingPage} from '../booking/booking.page';
 import {AuthService} from '../../providers/auth.service';
 import {LoginPage} from '../login/login.page';
 import {NewReviewPage} from '../new-review/new-review.page';
+import {RoomCreatorService} from '../../providers/room-creator.service';
 
 @Component({
     selector: 'app-room',
@@ -18,11 +19,13 @@ export class RoomPage implements OnInit {
     room: Room;
     currencySuffix = ',-';
     mapPreviewImageUrl: string;
+    isMyRoom: boolean;
 
     constructor(private modalController: ModalController,
                 private router: Router,
                 private route: ActivatedRoute,
                 private auth: AuthService,
+                private roomService: RoomCreatorService,
                 private actionSheetController: ActionSheetController) {
 
         this.route.queryParams.subscribe(params => {
@@ -35,10 +38,16 @@ export class RoomPage implements OnInit {
 
     ngOnInit() {
 
-        const coordinates = `${this.room.coordinates.longitude},${this.room.coordinates.latitude},16,0.00,0.00`;
-        const token = 'pk.eyJ1IjoiamFobWFyMTciLCJhIjoiY2pvazNkODgyMDJtOTNwbW43YTQ2azA5ZSJ9.iPR0QgDHkzsJMy6jgCGNMg';
+        if (this.room.coordinates) {
+            const coordinates = `${this.room.coordinates.longitude},${this.room.coordinates.latitude},16,0.00,0.00`;
+            const token = 'pk.eyJ1IjoiamFobWFyMTciLCJhIjoiY2pvazNkODgyMDJtOTNwbW43YTQ2azA5ZSJ9.iPR0QgDHkzsJMy6jgCGNMg';
 
-        this.mapPreviewImageUrl = `https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/${coordinates}/1000x600@2x?access_token=${token}`;
+            this.mapPreviewImageUrl = `https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/${coordinates}/1000x600@2x?access_token=${token}`;
+        }
+
+        if (this.room.owner === this.auth.currentUserId) {
+            this.isMyRoom = true;
+        }
 
     }
 
@@ -108,5 +117,37 @@ export class RoomPage implements OnInit {
         });
 
         return await modal.present();
+    }
+
+    async viewAdminOptions() {
+        const actionSheet = await this.actionSheetController.create({
+            header: `Edit`,
+            subHeader: 'Make changes to your room.',
+            buttons: [{
+                text: 'Delete',
+                role: 'destructive',
+                handler: () => {
+                    this.delete();
+                }
+            },
+                {
+                    text: 'Cancel',
+                    role: 'cancel',
+                    handler: () => {
+
+                    }
+                }],
+
+        });
+
+        await actionSheet.present();
+    }
+
+    async delete() {
+        await this.roomService.deleteRoom(this.room);
+
+        // TODO: go to previous page instead of back to start
+        this.router.navigate(['']);
+
     }
 }

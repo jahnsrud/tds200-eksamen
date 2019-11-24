@@ -15,6 +15,41 @@ export class RoomCreatorService {
               private auth: AuthService) {
   }
 
+  async createAndUploadRoom(room: Room) {
+
+    if (this.auth.isLoggedIn) {
+
+      await this.firestore.collection('rooms').add({
+        owner: this.auth.currentUserId,
+        name: room.name,
+        imageUrl: room.imageUrl,
+        priceInNok: room.priceInNok,
+        description: room.description,
+        address: room.address,
+        maxNumberOfPeople: room.maxNumberOfPeople,
+        bookedByUser: room.bookedByUser,
+        bookedUntil: room.bookedUntil,
+        facilities: room.facilities,
+        coordinates: room.coordinates,
+        reviews: []
+
+        // TODO: Check out this
+      }).catch(error => {
+        console.error('Please have a look at this');
+        console.error(error);
+
+      });
+
+    }
+  }
+
+  async deleteRoom(room: Room) {
+    this.firestore.doc(`rooms/${room.id}`).delete().catch(error => {
+          console.log(error);
+    }).then(() => console.log(`Deleting post (${room.id}) in (${room})`));
+
+  }
+
   async uploadBase64Image(imageBase64) {
     const fileRef = this.fireStorage.ref(this.randomId);
 
@@ -38,29 +73,6 @@ export class RoomCreatorService {
 
   get randomId(): string {
     return `app-img-${uuid()}.jpg`;
-  }
-
-  async createAndUploadRoom(room: Room) {
-
-    if (this.auth.isLoggedIn) {
-
-      await this.firestore.collection('rooms').add({
-        owner: this.auth.currentUserId,
-        name: room.name,
-        imageUrl: room.imageUrl,
-        priceInNok: room.priceInNok,
-        description: room.description,
-        address: room.address,
-        maxNumberOfPeople: room.maxNumberOfPeople,
-        availability: room.availability,
-        facilities: room.facilities,
-        coordinates: room.coordinates,
-        reviews: []
-
-      });
-
-    }
-
   }
 
 }

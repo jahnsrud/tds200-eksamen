@@ -7,8 +7,9 @@ export default interface Room {
     description: string;
     address: string;
     maxNumberOfPeople: number;
-    availability: string;
     facilities: string[];
+    bookedByUser: string;
+    bookedUntil: string;
     coordinates: Coordinates;
     reviews: Review[];
 }
