@@ -66,9 +66,10 @@
 
 </ion-content>
 
-<ion-footer *ngIf="!bookingService.isRoomBooked(room)">
+<ion-footer>
     <ion-toolbar>
-        <ion-grid>
+        <p  *ngIf="bookingService.isRoomBooked(room)" class="booked-text">This room is booked.</p>
+        <ion-grid *ngIf="!bookingService.isRoomBooked(room)">
             <ion-row class="ion-align-items-center">
                 <ion-col>
                     <p class="booking-info-text">1 day</p>
