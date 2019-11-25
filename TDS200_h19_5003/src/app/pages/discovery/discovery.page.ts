@@ -15,20 +15,26 @@ export class DiscoveryPage implements OnInit {
   constructor(private firestore: AngularFirestore) { }
 
   ngOnInit() {
+    this.loadAvailableRooms();
 
+  }
+
+  loadAllRooms() {
     // Gets all rooms
-    // this.rooms$ = this.firestore.collection('rooms').valueChanges({idField: 'id'}) as Observable<Room[]>;
+    this.rooms$ = this.firestore.collection('rooms').valueChanges({idField: 'id'}) as Observable<Room[]>;
+
+  }
+
+  loadAvailableRooms() {
+
+    // Gets all rooms available now by checking if bookedUntil is set to an earlier date.
+    // A bit of a workaround that should be improved
 
     const date = new Date();
-    console.log(date);
-
-    // Gets all rooms available now
 
     this.rooms$ = this.firestore.collection('rooms', ref =>
         ref.where('bookedUntil', '<', date)
     ).valueChanges({idField: 'id'}) as Observable<Room[]>;
-
-
   }
 
   trackFunc(index, item) {
@@ -36,5 +42,25 @@ export class DiscoveryPage implements OnInit {
   }
 
 
+  refresh(event) {
+    setTimeout(() => {
+      event.target.complete();
+    }, 500);
+  }
 
+  segmentChanged(event) {
+    console.log('Segment changed', event);
+
+
+    // Clear our rooms array to avoid duplicate data being displayed in the wrong mode
+    this.rooms$ = new Observable<[Room]>();
+
+    if (event === 'available') {
+      this.loadAvailableRooms();
+    } else {
+      this.loadAllRooms();
+    }
+
+
+  }
 }

@@ -20,7 +20,10 @@ export class RoomEditorService {
 
     if (this.auth.isLoggedIn) {
 
-      // Workaround for the AngularFire query to fetch correctly
+      // Workaround for the AngularFire query to fetch correctly.
+      // Sets the rooms last booked date to January 1st 1970.
+      // Should probably be improved.
+
       const initialDate = new Date(0);
 
       await this.firestore.collection('rooms').add({
@@ -39,8 +42,8 @@ export class RoomEditorService {
 
         // TODO: Check out this
       }).catch(error => {
-        console.error('Please have a look at this');
         console.error(error);
+        throw error;
 
       });
 

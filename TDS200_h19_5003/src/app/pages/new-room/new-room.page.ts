@@ -7,7 +7,6 @@ import * as mapboxgl from 'mapbox-gl';
 import * as MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 import {Location} from '@angular/common';
 import {AuthService} from '../../providers/auth.service';
-import * as firebase from 'firebase';
 
 @Component({
   selector: 'app-new-room',
@@ -123,12 +122,18 @@ export class NewRoomPage implements OnInit {
     toast.present();
   }
 
-  create() {
+  async create() {
 
-    this.setFacilities();
-
+    await this.setFacilities();
     // TODO: Indicate error or success
-    this.roomCreator.createAndUploadRoom(this.room);
+    try {
+      await this.roomCreator.createAndUploadRoom(this.room);
+      this.close();
+    } catch (e) {
+      this.presentToast(`Something went wrong ${e}`);
+    }
+
+
   }
 
 
@@ -204,14 +209,6 @@ export class NewRoomPage implements OnInit {
 
     this.room.imageUrl = uploadedImageUrl;
 
-    /*
-    for (const file of files) {
-      console.warn('HEY');
-      console.warn(file);
-
-    }
-
-     */
   }
 
 }

@@ -2,11 +2,24 @@
   <ion-toolbar>
     <ion-title>Find Room</ion-title>
   </ion-toolbar>
+  <ion-toolbar>
+    <ion-segment (ionChange)="segmentChanged($event)" value="available">
+      <ion-segment-button value="available">
+        <ion-label>Available Now</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="reserved">
+        <ion-label>Popular</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
 </ion-header>
 
 <ion-content class="ion-padding">
+  <ion-refresher slot="fixed" (ionRefresh)="refresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
   <ion-list>
-    <ion-item *ngFor="let room of rooms$ | async; trackBy: trackFunc" lines="none" class="ion-no-padding">
+    <ion-item *ngFor="let room of rooms$" lines="none" class="ion-no-padding">
       <app-meeting-room [room]="room"></app-meeting-room>
     </ion-item>
   </ion-list>
