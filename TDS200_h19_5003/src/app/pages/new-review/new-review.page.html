@@ -22,10 +22,7 @@
                       (ratingChanged)="onRateChange($event)">
   </ionic4-star-rating>
 
-  <ion-item class="ion-no-padding" lines="none">
-    <ion-textarea class="review-text" placeholder="Review" [(ngModel)]="review.comment" autocapitalize="on"></ion-textarea>
-  </ion-item>
-
+  <ion-textarea class="review-text" placeholder="Review" [(ngModel)]="review.comment" autocapitalize="on"></ion-textarea>
   <ion-button (click)="publish()" [disabled]="review.stars == 0" expand="block">Publish</ion-button>
 
 </ion-content>

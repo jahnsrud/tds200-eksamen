@@ -26,9 +26,9 @@ export class RoomPage implements OnInit {
     constructor(private modalController: ModalController,
                 private router: Router,
                 private route: ActivatedRoute,
-                private auth: AuthService,
-                private bookingService: RoomBookingService,
-                private roomService: RoomEditorService,
+                public auth: AuthService,
+                public bookingService: RoomBookingService,
+                public roomService: RoomEditorService,
                 private actionSheetController: ActionSheetController) {
 
         this.route.queryParams.subscribe(params => {

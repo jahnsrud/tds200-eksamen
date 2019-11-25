@@ -10,7 +10,7 @@ import {LoginPage} from '../login/login.page';
 })
 export class ProfilePage implements OnInit {
 
-  constructor(private authService: AuthService,
+  constructor(public authService: AuthService,
               private modalController: ModalController) {
   }
 

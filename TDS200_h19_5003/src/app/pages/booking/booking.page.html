@@ -1,20 +1,18 @@
 <ion-header>
-  <ion-toolbar color="dark">
-    <ion-title>Booking</ion-title><ion-buttons slot="end">
-      <ion-button (click)="close()">
-          Cancel
-      </ion-button>
-  </ion-buttons>
-  </ion-toolbar>
+    <ion-toolbar color="dark">
+        <ion-title>Booking</ion-title>
+        <ion-buttons slot="end">
+            <ion-button (click)="close()">
+                Cancel
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content class="ion-padding">
-    <div class="pricing-total">
-
-        <h1>{{room.name}}</h1>
-        <p>Until {{requestDate}}</p>
-
-        <ion-item class="ion-no-padding">
+    <h1 class="room-name heading">Duration</h1>
+    <div class="duration>">
+        <ion-item class="duration-picker" lines="none">
             <ion-label>Reserve room until</ion-label>
             <ion-datetime displayFormat="D MMM YYYY HH:mm"
                           placeholder="Select Date"
@@ -25,24 +23,71 @@
             </ion-datetime>
         </ion-item>
 
-
-
-        <h2>Your Total</h2>
-        <p>{{formattedDate}}</p>
-
-        <p class="price">{{room.priceInNok}}{{currencySuffix}}</p>
-
     </div>
 
-    <div class="payment-methods">
-        <h1>Payment</h1>
-        <div class="payment-method">
-            <ion-icon name="document" class="method-icon"></ion-icon>
-            <p class="method-type">Invoice</p>
-            <p class="method-description">Your invoice will be sent to {{auth.getUser.email}}</p>
+    <div *ngIf="requestDate != null">
+        <h1 class="room-name heading">Total</h1>
+        <div class="pricing-total">
+            <ion-row class="ion-align-items-center">
+                <ion-col size="4" class="col-left">
+                    <p>Room</p>
+                </ion-col>
+                <ion-col size="8" class="ion-align-self-end col-right">
+                    <p>{{room.name}}</p>
+                </ion-col>
+            </ion-row>
+
+            <ion-row class="ion-align-items-center">
+                <ion-col size="4" class="col-left">
+                    <p>Price/day</p>
+                </ion-col>
+                <ion-col size="8" class="ion-align-self-end col-right">
+                    <p>{{room.priceInNok}}{{currencySuffix}}</p>
+                </ion-col>
+            </ion-row>
+
+            <ion-row class="ion-align-items-center">
+                <ion-col size="4" class="col-left">
+                    <p>Days</p>
+                </ion-col>
+                <ion-col size="8" class="ion-align-self-end col-right">
+                    <p>{{totalDays}}</p>
+                </ion-col>
+            </ion-row>
+
+            <ion-row class="ion-align-items-center">
+                <ion-col size="4" class="col-left">
+                    <p>Sum</p>
+                </ion-col>
+                <ion-col size="8" class="ion-align-self-end col-right">
+                    <p>{{totalSum}}{{currencySuffix}}</p>
+                </ion-col>
+            </ion-row>
+
+
+
         </div>
     </div>
 
-    <ion-button (click)="confirmBooking()" color="tertiary" expand="block">Confirm Booking</ion-button>
+    <div class="payment-methods">
+        <h1 class="heading">Payment</h1>
+        <div class="payment-method">
+
+            <ion-row class="ion-align-items-center">
+                <ion-col size="3">
+                    <ion-icon name="document" class="method-icon"></ion-icon>
+                </ion-col>
+                <ion-col size="9" class="ion-align-self-start">
+                    <p class="method-type">Invoice</p>
+                    <p class="method-description">Your invoice will be sent to {{auth.getUser.email}}</p></ion-col>
+            </ion-row>
+
+
+        </div>
+    </div>
+
+    <ion-button (click)="confirmBooking()" class="confirm-button" [disabled]="requestDate == null" color="tertiary"
+                expand="block">Confirm Booking
+    </ion-button>
 
 </ion-content>

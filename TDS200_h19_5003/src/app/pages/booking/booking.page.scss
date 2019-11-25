@@ -2,22 +2,57 @@ ion-content {
   --background: #3c3f40;
 }
 
+.room-name {
+  font-weight: bold;
+  font-size: 18pt;
+}
+
+.heading {
+  color: white;
+  letter-spacing: 0.4px;
+  font-weight: bold;
+  font-size: 11pt;
+  text-transform: uppercase;
+}
+
+.confirm-button {
+  margin-top: 16px;
+}
+
+.duration-picker {
+  --background: #3c3f40;
+  border: 1px solid gray;
+  color: white;
+  border-radius: var(--default-border-radius);
+}
+
 .pricing-total {
-  background: #313434;
+  border: 1px solid gray;
   padding: 16px;
   border-radius: var(--default-border-radius);
   color: white;
 
+  .col-left {
+    font-weight: bold;
+  }
+
+  .col-right {
+    text-align: right;
+  }
+
+  .name {
+    font-size: 13pt;
+  }
+
   .price {
     letter-spacing: 0.8px;
-    font-weight: bold;
   }
 
 }
 
 .payment-methods {
   .payment-method {
-    padding: 32px;
+    padding: 24px;
     border: 1px solid gray;
     border-radius: var(--default-border-radius);
     color: white;
@@ -25,13 +60,16 @@ ion-content {
     .method-type {
       font-weight: bold;
       font-size: 14pt;
+      margin: 0;
+      margin-bottom: 6px;
     }
     .method-description {
-
+      margin: 0;
+      letter-spacing: 0.4px;
     }
 
     .method-icon {
-      font-size: 32pt;
+      font-size: 30pt;
     }
   }
 }
