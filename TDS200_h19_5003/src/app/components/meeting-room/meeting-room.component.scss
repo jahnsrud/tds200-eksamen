@@ -62,10 +62,14 @@
     .capacity-icon {
       display: inline-block;
       font-size: 18pt;
+      color: gray;
     }
 
     .capacity-text {
       display: inline-block;
+      color: gray;
+      margin-left: 8px;
+      font-weight: bold;
     }
 
   }

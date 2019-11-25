@@ -52,13 +52,15 @@
                             fontSize = "16px">
         </ionic4-star-rating>
 
-        <p *ngIf="room.reviews.length > 0">{{roomService.averageRating(room).toFixed(1)}}</p>
+        <p *ngIf="room.reviews.length > 1">{{roomService.averageRating(room).toFixed(1)}}</p>
         <p *ngIf="room.reviews.length == 0">No reviews yet.</p>
-        <ion-button (click)="writeReview()">Write Review</ion-button>
 
         <div *ngIf="room.reviews.length > 0" class="reviews">
             <app-review *ngFor="let review of room.reviews" [review]="review"></app-review>
         </div>
+
+        <ion-button (click)="writeReview()" expand="block">Write Review</ion-button>
+
 
     </div>
 
