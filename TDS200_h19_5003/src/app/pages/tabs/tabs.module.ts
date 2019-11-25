@@ -9,17 +9,17 @@ import { TabsPage } from './tabs.page';
 
 const routes: Routes = [
   {
-    path: 'tabs',
+    path: 'app',
     component: TabsPage,
     children: [
-      { path: 'tab1', loadChildren: '../discovery/discovery.module#DiscoveryPageModule' },
-      { path: 'tab2', loadChildren: '../my-rooms/my-rooms.module#MyRoomsPageModule' },
-      { path: 'tab3', loadChildren: '../profile/profile.module#ProfilePageModule' },
+      { path: 'discovery', loadChildren: '../discovery/discovery.module#DiscoveryPageModule' },
+      { path: 'my-rooms', loadChildren: '../my-rooms/my-rooms.module#MyRoomsPageModule' },
+      { path: 'profile', loadChildren: '../profile/profile.module#ProfilePageModule' },
     ]
   },
   {
     path: '',
-    redirectTo: '/tabs/tab1',
+    redirectTo: '/app/discovery',
     pathMatch: 'full'
   }
 ];
